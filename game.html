@@ -29,9 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-title" content="LingoPop"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"/>
+<link rel="preload" href="fonts/rubik-hebrew.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="fonts/material-symbols-subset.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="app.css"/>
 </head>
 <body class="bg-surface text-on-surface font-body-md">
@@ -56,7 +55,7 @@
 <div class="absolute inset-0 rounded-full bg-primary-fixed-dim/40 blur-lg animate-pulse"></div>
 <div class="relative w-24 h-24 rounded-full bg-surface-container-lowest p-2 shadow-xl flex items-center justify-center">
 <div class="w-full h-full rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center">
-<img alt="LingoPop App Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs9rdFEkg6Uju3o8xZajOEB7TvIm49oQbPoo5qgOmaC26i40FbbRW2DXXiKkdUuTic_NKB_SdMxKnM2IysEUt2TrxK9SWz28ltt00Hm4OPPtSPoiCh0VqQ4DZ2l3mbV2oWLgVsRwtNFhP2Xo4ugAVpRkk73hyZ_Xv9J00PFeze7KkKAj_zwNNTi7VaYBKReZX0gcbEA4Ao1MBJ1Jwc87s3llkn8NjkpKtuvNM-L_4"/>
+<span role="img" aria-label="LingoPop" class="select-none leading-none text-5xl">🐶</span>
 </div>
 </div>
 <div class="absolute -bottom-1 -right-1 bg-tertiary-fixed text-on-tertiary-fixed p-1.5 rounded-full shadow-md flex items-center justify-center">
@@ -142,7 +141,7 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-age" data-screen="age" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Age Selection</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop" class="h-8 w-auto object-contain hidden sm:block" src="icon-192.png"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Age Selection</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-8 select-none">
 <!-- Stepper Indicator & Delight Sparkle -->
 <div class="w-full flex flex-col items-center pt-2 pb-4">
@@ -208,7 +207,7 @@
 </div>
 <!-- Mascot Illustration Container -->
 <div class="relative w-24 h-24 rounded-lg bg-surface-container-high/60 flex-shrink-0 flex items-center justify-center overflow-hidden p-1 shadow-inner">
-<img class="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-300" data-alt="Delightful warm 3D illustration of a cheerful baby fox character sitting happily on soft pastel floor playing with glowing wooden alphabet toy blocks marked with English letters A B C, Pixar style, warm studio lighting, soft cream and playful lavender background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDODtvX607ReanbWibHwwAB-U66aMABOyXiNqxTWQmcf7OPz40TZQxb78igsXZAl6DC0ONF9Cz7aV0SVkdAamm78JoQcpne6v-6FT3dkRjSOjiCoW56RzMP-1dcmK800aLL1ertvELYCfW1dbjsfLOp8ukIkdy1XNaV55Q89a5UA_hdC5cNL67IVJI3hKpJHp3Zm06UDaR7tJS4LbUvgHqBqQIhyJsgMCLfcvVueqQ"/>
+<span role="img" aria-label="שועל" class="select-none leading-none text-6xl">🦊</span>
 <!-- Chunky ABC Wooden Block Float -->
 <div class="absolute -bottom-1 -left-1 bg-secondary text-on-secondary px-1.5 py-0.5 rounded-md font-english-phonics-pill text-[12px] font-extrabold shadow-sm rotate-6">
             ABC
@@ -260,7 +259,7 @@
 </div>
 <!-- Mascot Illustration Container -->
 <div class="relative w-24 h-24 rounded-lg bg-surface-container-high/60 flex-shrink-0 flex items-center justify-center overflow-hidden p-1 shadow-inner">
-<img class="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-300" data-alt="Cute friendly little owl wearing bright playful glasses, holding a small brass toy telescope and peering at floating playful glowing speech bubbles with English words 'Hello' and 'Fun', 3D rendered style with gentle tactile rubber textures, warm bright studio lighting, soft joyful composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY3Dm8aHvMy9L3fbKG8oLQJOTKiNYctE_IH1N4cd10rEnRYxKUGlexaAzTmf3TzjJ_mJcyrlb0Bw3vL9_DodTkn6dcF_LOfN8tAWCE6tR57QzErI09CTFSBVKmmnU4dsj7dgHxxLzvmR7QMrWAa7lDLga5g8gNKApDrUsxC09axxwyc6IuhORh93E-obdtZBTDh8fKPJal5qvpQr6EseLdfTr_EaW6aAfGa4ExMvg"/>
+<span role="img" aria-label="ינשוף" class="select-none leading-none text-6xl">🦉</span>
 <!-- Speech Badge Float -->
 <div class="absolute -bottom-1 -left-1 bg-tertiary-fixed text-on-tertiary-fixed px-1.5 py-0.5 rounded-md font-english-phonics-pill text-[12px] font-extrabold shadow-sm -rotate-3">
             Hi! 👋
@@ -294,14 +293,14 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-home" data-screen="home" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop App Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Home</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop" class="h-8 w-auto object-contain" src="icon-192.png"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Home</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full pb-6 gap-y-5" dir="rtl">
 <!-- Top Child Profile Greeting & Rewards Bar -->
 <section class="w-full flex items-center justify-between bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
 <div class="flex items-center gap-space-sm">
 <div class="relative">
 <div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center shadow-inner overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Charming 3D rendered joyful lion cub avatar smiling warmly, vibrant colors, child-friendly illustration style on soft sky-blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Uo4QWHmdEr16Q7lD_n3x1KpbEeH-thxH-kBzUwHWSRuGGvdi-I7ZB0kIfGEje2LlvyW-F7IAGRZHAeZuCt_uwtl2W9ellt10p_HvsyanPvCBwcMb9uu-uscH8BQY4JlmGzk8WQA6PhKii_AmLxqdkQ3bLzs3ls8fXxE7pC-EeC4x5mJkjRl9X0nZJb4duXpmUgk7PgSRif3_MVh2Vcfwq1h4R2OgaThxvKAOIgI"/>
+<span role="img" aria-label="אריה" class="select-none leading-none text-3xl">🦁</span>
 </div>
 <div class="absolute -bottom-1 -left-1 bg-secondary-container text-on-secondary-container w-6 h-6 rounded-full flex items-center justify-center text-[12px] shadow-sm font-label-chunky">
           🦁
@@ -481,7 +480,7 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-lesson" data-screen="lesson" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop" class="h-8 w-auto object-contain hidden sm:block" src="icon-192.png"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-8 select-none">
 <!-- Progress & Context Header Bar -->
 <div class="flex items-center justify-between gap-space-sm mb-space-md">
@@ -516,7 +515,7 @@
 </div>
 <!-- Hero Illustration of Golden Puppy -->
 <div class="relative w-full max-w-[260px] aspect-square my-space-xs flex items-center justify-center">
-<img class="w-full h-full object-contain filter drop-shadow-md transition-transform duration-300 active:scale-105" data-alt="High quality clean 3D claymation and vector hybrid illustration of an adorable cheerful golden retriever puppy sitting happily with sparkling expressive eyes and soft floppy ears, playful vibrant pastel aesthetic on gentle cream backdrop designed for children app" id="puppy-mascot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVjy2WK1h8AOpJraQIIaFbCP18Cua6bd9g1Mcex_nNv-TexjOavcQcZt0kee-BQp06NPaYhuXRSJDmnebANvn5QHw1IuppPSAO2Qk310iLesdzNT5vIFaZOJR5dB2B4c_SoMbIQGwcA1xhAQybCrxRXwJ9YbOg_3amoTH-qQi30RSvWqzeZElXKxbPGfB4EWD2ho2ix8OOajB4KEnPSXOIdtWRxd-g898jhJ9Thcg"/>
+<span role="img" aria-label="כלב" class="select-none leading-none text-[8rem]">🐶</span>
 <!-- Tactile Sound Effect Badge Overlay -->
 <div class="absolute top-2 right-2 bg-surface-container-high/90 backdrop-blur-md rounded-full px-2.5 py-1 text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-1">
 <span>🐾</span>
@@ -578,7 +577,7 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-practice" data-screen="practice" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="spring-touch w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="spring-touch w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="spring-touch w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="spring-touch w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop" class="h-8 w-auto object-contain hidden sm:block" src="icon-192.png"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="spring-touch w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="spring-touch w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-6 gap-y-4 select-none">
 <!-- Progress & Motivational Tracker Pill -->
 <div class="animate-stagger-1 w-full flex items-center justify-between bg-surface-container-lowest rounded-full px-4 py-2.5 shadow-sm">
@@ -650,7 +649,7 @@
 </div>
 <!-- Rich Illustration Placeholder -->
 <div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
-<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Chunky 3D clay-style golden retriever puppy sitting happily with big friendly eyes and a wagging tail, rendered in warm pastel lighting on a clean neutral background, heirloom toy aesthetic suitable for early childhood learning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAtbleuxmGdq_s_sotaeC89DT5RV6MSpYLgi4t9HRqBnLLnwUZoTNypRN99poH5U-CEwDE6HiUp2eTMLSC-Ayovsg-2_y4OXWWYuGk4EjGbrjkf5x2fJvrEIveDKcplUnsLcReukM4CBtQ5hSpom0tP4vT7njN9XXvuegR6QYehAi5YOlRdN27DWppQPVqqaWQLHTq6S-Q4-sMFsUsK0PWFXUI5yhex7bGQ5-SHqE"/>
+<span role="img" aria-label="כלב" class="absolute inset-0 flex items-center justify-center select-none leading-none text-6xl">🐶</span>
 </div>
 <!-- Bilingual Label Container -->
 <div class="mt-2.5 flex flex-col items-center w-full">
@@ -663,7 +662,7 @@
 <!-- Option 2: CAT -->
 <div class="float-card-2 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-cat">
 <div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
-<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Cute friendly ginger cat with rounded paws and curious round eyes playfully resting, soft plasticine or wooden toy finish, gentle daylight pastel colors on minimal backdrop, delightful kid-friendly design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT4pgpU6s-5wD6huwLNww0SVo_xXOMz5MdVNvIoKnN4NOhuT05lFManmiU8aYzbO2XSgoEyXKU8UM9VvnaPgARvc8zBt4UC4e2aUffTabt5g8Bh_Wl8d-7AkjLrU5ZA1RGzUKWGgHhfEjEvxXWDUMTt1pkTNlNCTA8LZGznMQb2_wedLOxe1IuhAl6xt-s4YwU3pCVczpwJ6WEB-0gKDWr6cH0h_pUPVRYXB9abN8"/>
+<span role="img" aria-label="חתול" class="absolute inset-0 flex items-center justify-center select-none leading-none text-6xl">🐱</span>
 </div>
 <div class="mt-2.5 flex flex-col items-center w-full">
 <span class="font-english-phonics-pill text-english-phonics-pill text-on-surface" dir="ltr">Cat</span>
@@ -674,7 +673,7 @@
 <!-- Option 3: FISH -->
 <div class="float-card-3 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-fish">
 <div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
-<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Stylized playful orange and yellow tropical clownfish smiling underwater with soft bubbling water drops, rounded forms, smooth toy block texture, clean vibrant aesthetic for toddlers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqZNukBAzT63imqsD31Y08U9Nu87tVd489oLhDBjskFGLNDfezyF3XclV7VXgI83FwJBVhUke7FShkissSZN8f9lZBzTOiKHMLmQESoo7HoevtDn5eYFmlnBCv9JLFs6dkFcmIo1AUXAMQJLI_mSmclfOkSAYL1WI1ulO9QORNEVGXbVOHW7rrLIWFnlYVDCxjHvj9HKJlCpvSGUh9tefaCSk6Oh_3Bl4aIy0gh7g"/>
+<span role="img" aria-label="דג" class="absolute inset-0 flex items-center justify-center select-none leading-none text-6xl">🐟</span>
 </div>
 <div class="mt-2.5 flex flex-col items-center w-full">
 <span class="font-english-phonics-pill text-english-phonics-pill text-on-surface" dir="ltr">Fish</span>
@@ -685,7 +684,7 @@
 <!-- Option 4: LION -->
 <div class="float-card-4 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-lion">
 <div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
-<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Gentle smiling baby lion cub with a fluffy rounded mane, styled as a soft high-end children collectible figurine, warm sunny tones, joyful tactile surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEC47D-fk8mU7bz4yBsqasxIVzZ5ozKTVUrAVNLiCRxxV1caTUw6ydiXfFZ6fBf426omwqbuVXSEP1WSbSftSUv8OVYfaiPPp6pXuGtM7mGCR-IZYaf85CRp8DVgWHU2wcmG8Lfx4lci3k-cIl10ji9AtABpdpbPRM_GVz-ogrnp9cMjvXQXVsqfZVC3EIvQJz9v39uHWORtJNlNB-E2nKEOrQ3ZUkaGN9eR5UqMc"/>
+<span role="img" aria-label="אריה" class="absolute inset-0 flex items-center justify-center select-none leading-none text-6xl">🦁</span>
 </div>
 <div class="mt-2.5 flex flex-col items-center w-full">
 <span class="font-english-phonics-pill text-english-phonics-pill text-on-surface" dir="ltr">Lion</span>
@@ -726,7 +725,7 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-sentence" data-screen="sentence" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop" class="h-8 w-auto object-contain hidden sm:block" src="icon-192.png"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-28">
 <!-- Progress & Rewards Island -->
 <div class="w-full flex items-center justify-between gap-space-sm mb-space-md pt-2">
@@ -760,7 +759,7 @@
 <div class="w-full bg-surface-container-lowest rounded-lg p-space-md shadow-md flex flex-col items-center mb-space-md">
 <!-- Illustration Container -->
 <div class="w-full h-44 rounded-DEFAULT overflow-hidden relative mb-space-md bg-surface-container-high flex items-center justify-center">
-<img class="w-full h-full object-cover" data-alt="Delightful and warm 3D animated golden retriever puppy sitting happily in a sunny green grassy room with soft pastel playroom blocks. The puppy has sparkling curious eyes, a soft playful smile, warm studio illumination, smooth plasticine toy aesthetic, joyful clean educational style with subtle violet and indigo accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPhzUopZG66W51rTrH1TdPx87JqidcCIMouUoFNmLhEijjCmCE_wtzb4X8fJ65Wm1RsCl9bFu3lggVDsG9VPli2trczUPddT3aqMxSUE9XkXLko7xIW7d_FZfY5HOTFkeLSzDaY4yadSlIXbLNGfjNcPNphj5CfnJa1lAlUjJzLAou0dDNhis-Cg11fH2jqJ44p-nI99TTbd1culTgHnkHoMkGh8Jn8e_o1vCA5s"/>
+<span role="img" aria-label="כלב" class="select-none leading-none text-8xl">🐶</span>
 <!-- Playful Floating Sparkle Badge -->
 <div class="absolute top-2.5 right-2.5 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full px-2.5 py-1 flex items-center gap-1 shadow-sm">
 <span class="material-symbols-outlined text-[16px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">pets</span>
@@ -859,7 +858,7 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-progress" data-screen="progress" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop App Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Home</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop" class="h-8 w-auto object-contain" src="icon-192.png"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Home</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full gap-space-lg select-none">
 <!-- Top Progress Island / Stats Strip -->
 <div class="flex flex-col gap-space-sm">
@@ -909,7 +908,7 @@
 <!-- Mascot Cheerful Avatar -->
 <div class="relative shrink-0">
 <div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden shadow-inner">
-<img class="w-14 h-14 object-contain" data-alt="Playful friendly cartoon pop-fox mascot smiling wearing an explorer hat with soft round edges and soft indigo and coral accents, joyful educational character in modern 3D toy style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxuCTm5NnjZLgSwdhQaCXWWgMewJViOQnqsUnI_SKg87boo6P0R6WMZ-UYfrIxkySSOFkpyVyZZq-wOh3WcS7VLq4KTFzMmx6aNLtk5pf-6sveEwv7HjiDNktRa8x5hQD73f91S8gQmHxwu4WGNSYvu1wOLdvyN0ALPoFwZ-6a_E3o06JHY-lfhZ7BNC8k_aJ8-EkxNAKAZlmJiju49JoM3L8Cr0YOtnpIXGwY0RpfQUYZU07XXN8Y"/>
+<span role="img" aria-label="שועל" class="select-none leading-none text-3xl">🦊</span>
 </div>
 <div class="absolute -bottom-1 -left-1 bg-tertiary-fixed text-on-tertiary-fixed w-6 h-6 rounded-full flex items-center justify-center shadow-sm">
 <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">celebration</span>
@@ -951,7 +950,7 @@
 <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
 <div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
-<img class="w-14 h-14 object-contain" data-alt="Cute friendly golden puppy toy icon sitting happily, 3D gentle clay style with pastel warm background, soft rounded edges child educational app asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbkEB23g03cSA2lyYvhBo7tBuqYLuteIJZaTeLNlAYzTJGkdxSbcywYjrqSCc1C5Slybd5DjmfK_OMVbLFqnsx-EX3zxWOv0VGU579BaOcgon5uc1HSr_alMZKpK4eqZ9UdNGnD80KNL7awOmM8kAwC6tvSjXF0rAVctRLvUzD14-3hbozMxF1tc38PcoFasufs2DxZmuz4NMprr33M987acdL-QgnlOHJLzTO66HRcS_wn-fp8It4"/>
+<span role="img" aria-label="כלב" class="select-none leading-none text-4xl">🐶</span>
 </div>
 <!-- Isolated LTR English Word -->
 <div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
@@ -969,7 +968,7 @@
 <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
 <div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
-<img class="w-14 h-14 object-contain" data-alt="Playful orange striped cartoon kitten sitting curiously, 3D soft toy style with gentle warm lighting, minimalist friendly child illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr_mXw6WOEzhy1XDIbXS8-nh3vn8ORLL5LGJcuZUaOnG3bc7tvHAJ_ROVhGYEb8bQQXDIBd3bybcakm4z0bhKtbwu2xG7ma8m2GHRE55bVPTrObm7hxfv98iogyk3bAzDJNyfpQgzrE7ovkTxauyit8a1_f1PmCKjMMaUF7rAlV88yJ6y2OwLKU1lvXFFN93DTd7Hl_YQxuZ5rZGuqsGC7CejY6q_kX57GxhNN81r-mrYlERtEMmHn"/>
+<span role="img" aria-label="חתול" class="select-none leading-none text-4xl">🐱</span>
 </div>
 <div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
           CAT
@@ -986,7 +985,7 @@
 <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
 <div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
-<img class="w-14 h-14 object-contain" data-alt="Cheerful tiny blue and yellow clownfish swimming playfully, rounded bubbly fins, 3D toy styling on clean pastel sky background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyH8fGUMlxKPxcHUOKfGVoWx5iQAj_2d1HtvWrogJQNLnNXKkpi3x7ckOwC9umg91k37jxzSNy2eZOb-MqGfwHvnZe4GMy5WACDEwpm62ntP58_mr_jchCLL_8oXvbqoorDvJ5Q3mi29MrXXuPLk8vkeIQ_pBFj1skCQydRKzdeijpk-fXGyrgvmVNhcg6nYKZin8ZMg8Y31sLeAvKOqOEotczFHl5tLoUcLiffEBCFSxz8pu4MeUs"/>
+<span role="img" aria-label="דג" class="select-none leading-none text-4xl">🐟</span>
 </div>
 <div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
           FISH
@@ -1003,7 +1002,7 @@
 <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
 <div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
-<img class="w-14 h-14 object-contain" data-alt="Chubby happy baby lion cub with fluffy mane, smiling sweetly, soft physical toy aesthetic with warm honey tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_09XhR0xAVm8c6EEF3uoF3SqO9rDQZ3ohGYhvQp8DqNlvYUXNalT3uwIlrQht76mftoUuaT4Y10km-iHsjoseprE8qL6-dgP8G1NFloQ6-cI5wXKvQ5z3T2UXQ-yly-gZAfIXNeQbAZd7GAqEzUN2mI1Wb0eGU-Yqk98FyuGCCZX6s7ZQPFiK4SIOH4IUtw4f9qTWrPYdK7JGz49V-0a9OZhWgKKEMP-lcXoQZhus8in-aEKHqNSY"/>
+<span role="img" aria-label="אריה" class="select-none leading-none text-4xl">🦁</span>
 </div>
 <div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
           LION
@@ -1020,7 +1019,7 @@
 <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
 <div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
-<img class="w-14 h-14 object-contain" data-alt="Bright shiny red cartoon apple with a soft green leaf, tactile wooden toy aesthetic, rounded clean rendering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrZbl16Iv6OAU7Gr4P-WfnGuJ698wPVighB5u6NZfw9sfZlf9z4AK2hGNhTOK6YS4nIsVBI1iGr7-uOOm0mRX5lwSWTY7pW_thGEyX8uIRiTXG9-0NRz9YTbwWmcoHKJdUC9WtQF-itZYfs9wBO4GW9jtoXYkcbE05OBGGRBHbmYhgna0YIq3aKpN2d7JSPUmJD38rXqAhQ5_nDlGucuyI1z0r2HpqCCVoMvJu6Ke7bFawKRZGbbh_"/>
+<span role="img" aria-label="תפוח" class="select-none leading-none text-4xl">🍎</span>
 </div>
 <div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
           APPLE
@@ -1037,7 +1036,7 @@
 <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
 <div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
-<img class="w-14 h-14 object-contain" data-alt="Playful colorful bouncy striped beach ball in bright red, yellow, and blue, smooth soft rubber finish, child game element" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWAHHR_X-U8S9OvbOVdsSOa8BTjohgnTb7yu0BDC0UOUV4NNTZWiLtJu0GFov5hByK0y3DMKlhYNiZU5nJ8jtSxQt_FKY2eYyemlXRULekFS0kAsutFyw2HKBMHWGvhYPlzLhN22Ms9b1O2YI21N7zsPowOEgWewY6yu_fYdXsIyPCzkQtUz-OZ5vHlxLVRm4dD_00k3JwvBRXNf4XkTQrR-l811HDQmc4unSrVTyxkvk-Aq-GTIn6"/>
+<span role="img" aria-label="כדור" class="select-none leading-none text-4xl">⚽</span>
 </div>
 <div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
           BALL
@@ -1132,13 +1131,13 @@
 </main>
 </section>
 <section class="screen flex flex-col min-h-screen" id="screen-parent" data-screen="parent" aria-hidden="true">
-<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop App Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">אזור הורים</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop" class="h-8 w-auto object-contain" src="icon-192.png"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">אזור הורים</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full gap-space-lg select-none pb-4">
 <!-- Parent Mode Context Header & Profile Strip -->
 <div class="flex items-center justify-between bg-surface-container-low rounded-lg p-space-md shadow-sm">
 <div class="flex items-center gap-space-sm min-w-0">
 <div class="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-primary-fixed flex items-center justify-center">
-<img class="w-full h-full object-cover" data-alt="A warm, bright, smiling portrait photo of a cheerful 5 year old Israeli boy with curly brown hair wearing a comfy soft mint green sweater, natural home lighting, clean minimalist portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwwsxyKJTlWzt-IBmGT3d-ewfL2sOf5DWvoGmdSTvIL5TRFi0fdFNN2VRwXvGden6U7lGL7AM5gSVR68qRfwJpERqdHiE9W8mqbrfo2pP7Ps35Tqa7qLuitl6LNaaQVMzplbrULnv6bTaacSO1IibsFP4ftYIyyf-qkdZ7GHz0EeJIlB1qkX3h8wUQAdT0laIaDAiCHEFNNUx_uHtXMMLqbNy_AGWOhSf8hEV2Y_rLGwf0D-Mniu4F"/>
+<span role="img" aria-label="ילד" class="select-none leading-none text-3xl">🧒</span>
 <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span>
 </div>
 <div class="min-w-0">
