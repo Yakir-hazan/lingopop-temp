@@ -3,11 +3,11 @@
    - Same-origin files: network-first (always fresh when online, 4s timeout, falls back to cache).
    - Google Fonts + external images: stale-while-revalidate into a capped runtime cache.
    To force every device to drop old files: bump VERSION. */
-const VERSION = 'lingopop-shell-v1';
+const VERSION = 'lingopop-shell-v2';
 const RUNTIME = 'lingopop-runtime-v1';
 const RUNTIME_MAX = 80;
-const CRITICAL = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest'];
-const OPTIONAL = ['icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const CRITICAL = ['./', 'index.html', 'game.html', 'app.css', 'app.js', 'install.js', 'manifest.webmanifest'];
+const OPTIONAL = ['icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
@@ -53,7 +53,7 @@ function networkFirst(req) {
     let done = false;
     const finish = (r) => { if (!done && r) { done = true; resolve(r); } };
     const fromCache = () => caches.match(req, { ignoreSearch: true })
-      .then((r) => r || (req.mode === 'navigate' ? caches.match('index.html') : null));
+      .then((r) => r || (req.mode === 'navigate' ? caches.match(new URL(req.url).pathname.endsWith('game.html') ? 'game.html' : 'index.html') : null));
     const timer = setTimeout(() => fromCache().then(finish), 4000);
     fetch(req).then((res) => {
       clearTimeout(timer);

@@ -1,4 +1,5 @@
 @tailwind base;@tailwind components;@tailwind utilities;
+[hidden]{display:none!important}
 html,body{margin:0;padding:0;background-color:#f8f9ff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 body{min-height:100dvh}
 .screen{display:none}
