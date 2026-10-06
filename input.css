@@ -1,0 +1,126 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+html,body{margin:0;padding:0;background-color:#f8f9ff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{min-height:100dvh}
+.screen{display:none}
+.screen.is-active{display:flex;animation:screenIn .25s ease-out}
+@keyframes screenIn{from{opacity:0}to{opacity:1}}
+#app-nav{display:none}#app-nav.is-visible{display:block}
+@layer base{html,body{margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior:none;font-family:'Rubik',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}.screen main>:first-child{margin-top:0!important;}.screen main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+  
+  /* Tactile Spring & Micro-Interactions */
+  .spring-touch {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    will-change: transform;
+  }
+  
+  /* Staggered entrance animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-stagger-1 { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.05s backwards; }
+  .animate-stagger-2 { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s backwards; }
+  .animate-stagger-3 { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards; }
+  .animate-stagger-4 { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s backwards; }
+  .animate-stagger-5 { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.32s backwards; }
+  .animate-stagger-6 { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.40s backwards; }
+
+  /* Ambient gentle floating for cards */
+  @keyframes gentleFloat1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  @keyframes gentleFloat2 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .float-card-1 { animation: gentleFloat1 3.4s ease-in-out infinite; }
+  .float-card-2 { animation: gentleFloat2 3.8s ease-in-out 0.4s infinite; }
+  .float-card-3 { animation: gentleFloat2 3.6s ease-in-out 0.8s infinite; }
+  .float-card-4 { animation: gentleFloat1 3.5s ease-in-out 1.2s infinite; }
+
+  /* Audio Wave Pulse Animation */
+  @keyframes soundWave {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.65;
+    }
+    100% {
+      transform: scale(1.65);
+      opacity: 0;
+    }
+  }
+
+  .sound-pulse-ring-1 {
+    animation: soundWave 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  }
+  .sound-pulse-ring-2 {
+    animation: soundWave 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) 0.7s infinite;
+  }
+
+  /* Interactive Reactions */
+  @keyframes correctPop {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.08) translateY(-4px); }
+    55% { transform: scale(0.96); }
+    75% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes gentleWobble {
+    0% { transform: translateX(0) scale(0.97); }
+    20% { transform: translateX(-5px) rotate(-1.5deg); }
+    40% { transform: translateX(4px) rotate(1.5deg); }
+    60% { transform: translateX(-3px) rotate(-0.8deg); }
+    80% { transform: translateX(2px) rotate(0.4deg); }
+    100% { transform: translateX(0) rotate(0deg) scale(1); }
+  }
+
+  .card-pop-celebrate {
+    animation: correctPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  }
+
+  .card-gentle-wobble {
+    animation: gentleWobble 0.48s ease-in-out !important;
+  }
+
+  /* Confetti micro-particles */
+  .confetti-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 100;
+    border-radius: 50%;
+    animation: confettiBurst 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes confettiBurst {
+    0% {
+      opacity: 1;
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--tx, 0px), var(--ty, -60px)) scale(0.3) rotate(var(--tr, 180deg));
+    }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .sound-pulse-ring-1, .sound-pulse-ring-2, .float-card-1, .float-card-2, .float-card-3, .float-card-4 {
+      animation: none !important;
+    }
+  }
+
