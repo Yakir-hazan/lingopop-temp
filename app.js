@@ -3,6 +3,7 @@
    This file: (1) LP core, (2) original screen micro-interactions, (3) navigation hooks, (4) boot. */
 (function () {
   'use strict';
+  if (window.__LP_BLOCKED) return; // browser visit: gate in game.html is redirecting to the landing page
 
   // ---------- 1. Core ----------
   var SCREENS = ['welcome', 'age', 'home', 'lesson', 'practice', 'sentence', 'progress', 'parent'];

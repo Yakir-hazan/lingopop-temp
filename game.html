@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<script>
+/* LingoPop gate: the game runs ONLY inside the installed PWA. Browser visits go back to the landing page.
+   ?dev=1 (session only, never linked anywhere) is a developer bypass for testing. */
+(function () {
+  var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+  var dev = false;
+  try {
+    if (/[?&]dev=1(&|$)/.test(location.search)) sessionStorage.setItem('lp.dev', '1');
+    dev = sessionStorage.getItem('lp.dev') === '1';
+  } catch (e) {}
+  if (!standalone && !dev) {
+    window.__LP_BLOCKED = true;
+    document.documentElement.style.display = 'none';
+    location.replace('./');
+  }
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<title>LingoPop</title>
+<meta name="theme-color" content="#f8f9ff"/>
+<meta name="description" content="אנגלית בכיף לילדים"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<link rel="icon" href="icon-192.png" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="LingoPop"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"/>
+<link rel="stylesheet" href="app.css"/>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<div id="app">
+<section class="screen flex flex-col min-h-screen pt-safe pb-safe" id="screen-welcome" data-screen="welcome" aria-hidden="true">
+
+<main class="flex-1 flex flex-col relative w-full px-margin bg-surface"><div class="flex flex-col w-full relative overflow-hidden select-none pb-8">
+<div class="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-secondary-container/10 blur-2xl pointer-events-none"></div>
+<div class="absolute top-1/3 -right-16 w-56 h-56 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-20 left-1/4 w-40 h-40 rounded-full bg-tertiary-fixed/30 blur-2xl pointer-events-none"></div>
+<div class="w-full flex justify-between items-center pt-2 px-2">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/60 shadow-sm backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-sm text-label-sm text-on-surface">אתגר יומי קל</span>
+</div>
+<button aria-label="הגדרות הורים" class="flex items-center justify-center w-11 h-11 rounded-full bg-surface-container text-on-surface-variant shadow-sm active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">family_restroom</span>
+</button>
+</div>
+<div class="flex flex-col items-center text-center mt-3 mb-2 px-4 relative z-10">
+<div class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 mb-3" id="logoBadge">
+<div class="absolute inset-0 rounded-full bg-primary-fixed-dim/40 blur-lg animate-pulse"></div>
+<div class="relative w-24 h-24 rounded-full bg-surface-container-lowest p-2 shadow-xl flex items-center justify-center">
+<div class="w-full h-full rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center">
+<img alt="LingoPop App Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs9rdFEkg6Uju3o8xZajOEB7TvIm49oQbPoo5qgOmaC26i40FbbRW2DXXiKkdUuTic_NKB_SdMxKnM2IysEUt2TrxK9SWz28ltt00Hm4OPPtSPoiCh0VqQ4DZ2l3mbV2oWLgVsRwtNFhP2Xo4ugAVpRkk73hyZ_Xv9J00PFeze7KkKAj_zwNNTi7VaYBKReZX0gcbEA4Ao1MBJ1Jwc87s3llkn8NjkpKtuvNM-L_4"/>
+</div>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary-fixed text-on-tertiary-fixed p-1.5 rounded-full shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex items-center gap-2 justify-center" dir="ltr">
+<h1 class="font-english-word-display text-english-word-display text-primary tracking-tight">LingoPop</h1>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-bounce"></span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface font-bold mt-0.5">
+      אנגלית בכיף ובביטחון!
+    </p>
+</div>
+<div class="relative w-full max-w-[380px] mx-auto my-3 px-2">
+<div class="relative w-full h-[230px] rounded-lg bg-surface-container-low shadow-md overflow-hidden flex flex-col items-center justify-center p-4">
+<div class="absolute -right-6 top-6 w-16 h-16 rounded-full bg-primary/5 pointer-events-none"></div>
+<div class="absolute left-4 -bottom-6 w-20 h-20 rounded-full bg-secondary-container/10 pointer-events-none"></div>
+<div class="absolute top-4 left-6 flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/90 shadow-sm animate-pulse" dir="ltr">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<span class="font-english-phonics-pill text-label-sm text-primary">"Hello!"</span>
+</div>
+<div class="relative flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-surface-container-high/50 flex items-center justify-center shadow-inner relative">
+<div class="absolute -top-3 right-2 bg-secondary-fixed text-on-secondary-fixed p-1.5 rounded-full shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">headphones</span>
+</div>
+<div class="w-24 h-24 rounded-full bg-surface-container-lowest shadow-md flex flex-col items-center justify-center p-2 relative">
+<div class="flex gap-4 mb-1">
+<span class="w-2 h-2.5 rounded-full bg-on-surface"></span>
+<span class="w-2 h-2.5 rounded-full bg-on-surface"></span>
+</div>
+<div class="w-3 h-2 rounded-full bg-secondary-container mb-1"></div>
+<div class="w-6 h-3 border-b-2 border-on-surface rounded-full"></div>
+<div class="absolute -left-2 top-3 w-4 h-9 rounded-full bg-surface-container-highest rotate-12"></div>
+<div class="absolute -right-2 top-3 w-4 h-9 rounded-full bg-surface-container-highest -rotate-12"></div>
+</div>
+<div class="absolute -bottom-1 -left-2 bg-tertiary-fixed text-tertiary-container w-8 h-8 rounded-full shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+<div class="absolute -right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container opacity-40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container opacity-60"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim opacity-50"></div>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<div class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">spellcheck</span>
+<span class="font-label-sm text-label-sm">צלילים ואותיות</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="font-label-sm text-label-sm">דיבור בקול</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full max-w-[380px] mx-auto px-2 my-2">
+<div class="w-full bg-surface-container rounded-full px-4 py-2.5 flex items-center justify-center shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center tracking-normal">
+        5 דקות ביום <span class="text-primary-container px-1">•</span> ללא צורך בידיעת קריאה <span class="text-primary-container px-1">•</span> משחקי ושמח
+      </p>
+</div>
+</div>
+<div class="w-full max-w-[380px] mx-auto px-2 mt-4 flex flex-col gap-3">
+<button class="group relative w-full h-[62px] bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center gap-3 transition-transform duration-100 active:translate-y-1" id="startBtn" type="button">
+<span class="font-label-chunky text-label-chunky font-bold tracking-wide">
+        מתחילים לשחק!
+      </span>
+<span class="material-symbols-outlined text-[26px] group-hover:translate-x-[-4px] transition-transform duration-200">
+        rocket_launch
+      </span>
+</button>
+<div class="flex items-center justify-center py-2">
+<button class="font-body-md text-body-md text-primary font-medium hover:underline focus:outline-none py-1 px-3 rounded-full active:bg-surface-container transition-colors" type="button">
+        כבר יש לנו חשבון? התחברו כאן
+      </button>
+</div>
+</div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-age" data-screen="age" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Age Selection</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-8 select-none">
+<!-- Stepper Indicator & Delight Sparkle -->
+<div class="w-full flex flex-col items-center pt-2 pb-4">
+<div class="inline-flex items-center gap-space-xs bg-surface-container-high/80 px-4 py-1.5 rounded-full shadow-sm mb-4">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">שלב 1 מתוך 2</span>
+<div class="flex items-center gap-1.5 mr-2">
+<span class="w-6 h-2 rounded-full bg-primary transition-all duration-300"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant/60"></span>
+</div>
+</div>
+<!-- Title & Subtitle -->
+<div class="text-center px-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight mb-2">
+        בן כמה הכוכב הקטן שלך?
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto">
+        נתאים את השיעורים והמשחקים לקצב המושלם עבורו!
+      </p>
+</div>
+</div>
+<!-- Cards Vertical Stack -->
+<div class="flex flex-col gap-space-md w-full max-w-md mx-auto mt-2" id="age-selector-group">
+<!-- Card 1: Ages 5-6 (Initially Selected) -->
+<div aria-checked="true" class="group relative w-full rounded-lg bg-surface-container-lowest p-space-md shadow-md cursor-pointer transition-all duration-200 active:translate-y-1 transform border-none ring-0 select-none overflow-hidden" id="card-age-5-6" onclick="selectAgeCard('card-age-5-6', '5-6')" role="radio" tabindex="0">
+<!-- Tactile base shadow imitation & active background tint -->
+<div class="absolute inset-0 bg-primary/5 transition-opacity duration-200 pointer-events-none rounded-lg" id="bg-active-5-6"></div>
+<!-- Top Badges Row -->
+<div class="relative z-10 flex items-center justify-between gap-2 mb-3">
+<span class="inline-flex items-center gap-1 bg-surface-container px-3 py-1 rounded-full text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">headphones</span>
+          למידה דרך צלילים ותמונות
+        </span>
+<!-- Selection Check Circle -->
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm transition-transform duration-200 scale-100" id="check-5-6">
+<span class="material-symbols-outlined text-[20px] font-bold">check</span>
+</div>
+</div>
+<!-- Main Content Horizontal Split: Details Right (RTL), Mascot Left -->
+<div class="relative z-10 flex items-center gap-space-md">
+<!-- Text & Attributes -->
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-1 leading-snug">
+            גילאי 5–6
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">
+            גן חובה עד כיתה א׳
+          </p>
+<!-- Micro Highlight Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded-full text-on-surface text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              שמיעה וזיהוי קולי
+            </span>
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded-full text-on-surface text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              משחקי מגע פשוטים
+            </span>
+<span class="inline-flex items-center gap-1 bg-secondary-fixed/50 px-2 py-0.5 rounded-full text-on-secondary-fixed-variant text-[12px] font-semibold">
+              ללא דרישת קריאה ✨
+            </span>
+</div>
+</div>
+<!-- Mascot Illustration Container -->
+<div class="relative w-24 h-24 rounded-lg bg-surface-container-high/60 flex-shrink-0 flex items-center justify-center overflow-hidden p-1 shadow-inner">
+<img class="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-300" data-alt="Delightful warm 3D illustration of a cheerful baby fox character sitting happily on soft pastel floor playing with glowing wooden alphabet toy blocks marked with English letters A B C, Pixar style, warm studio lighting, soft cream and playful lavender background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDODtvX607ReanbWibHwwAB-U66aMABOyXiNqxTWQmcf7OPz40TZQxb78igsXZAl6DC0ONF9Cz7aV0SVkdAamm78JoQcpne6v-6FT3dkRjSOjiCoW56RzMP-1dcmK800aLL1ertvELYCfW1dbjsfLOp8ukIkdy1XNaV55Q89a5UA_hdC5cNL67IVJI3hKpJHp3Zm06UDaR7tJS4LbUvgHqBqQIhyJsgMCLfcvVueqQ"/>
+<!-- Chunky ABC Wooden Block Float -->
+<div class="absolute -bottom-1 -left-1 bg-secondary text-on-secondary px-1.5 py-0.5 rounded-md font-english-phonics-pill text-[12px] font-extrabold shadow-sm rotate-6">
+            ABC
+          </div>
+</div>
+</div>
+<!-- Tactile Floor Lip -->
+<div class="absolute bottom-0 left-0 right-0 h-1.5 bg-primary rounded-b-lg" id="lip-5-6"></div>
+</div>
+<!-- Card 2: Ages 7-8 (Unselected Default) -->
+<div aria-checked="false" class="group relative w-full rounded-lg bg-surface-container-lowest p-space-md shadow-md cursor-pointer transition-all duration-200 active:translate-y-1 transform border-none ring-0 select-none overflow-hidden opacity-90 hover:opacity-100" id="card-age-7-8" onclick="selectAgeCard('card-age-7-8', '7-8')" role="radio" tabindex="0">
+<!-- Tactile base shadow imitation & active background tint -->
+<div class="absolute inset-0 bg-primary/0 transition-opacity duration-200 pointer-events-none rounded-lg" id="bg-active-7-8"></div>
+<!-- Top Badges Row -->
+<div class="relative z-10 flex items-center justify-between gap-2 mb-3">
+<span class="inline-flex items-center gap-1 bg-surface-container-high/60 px-3 py-1 rounded-full text-on-surface-variant font-label-sm text-label-sm font-bold" id="badge-tag-7-8">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+          אוצר מילים ומשפטים ראשונים
+        </span>
+<!-- Selection Check Circle -->
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline-variant shadow-none transition-transform duration-200 scale-90" id="check-7-8">
+<span class="material-symbols-outlined text-[20px] font-bold">check</span>
+</div>
+</div>
+<!-- Main Content Horizontal Split: Details Right (RTL), Mascot Left -->
+<div class="relative z-10 flex items-center gap-space-md">
+<!-- Text & Attributes -->
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-1 leading-snug">
+            גילאי 7–8
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">
+            כיתות ב׳–ג׳
+          </p>
+<!-- Micro Highlight Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded-full text-on-surface text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+              מילים ראשונות וביטויים
+            </span>
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded-full text-on-surface text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+              אתגרי זיכרון והגייה
+            </span>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-full text-on-surface-variant text-[12px] font-medium">
+              שיחות קצרות 💬
+            </span>
+</div>
+</div>
+<!-- Mascot Illustration Container -->
+<div class="relative w-24 h-24 rounded-lg bg-surface-container-high/60 flex-shrink-0 flex items-center justify-center overflow-hidden p-1 shadow-inner">
+<img class="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-300" data-alt="Cute friendly little owl wearing bright playful glasses, holding a small brass toy telescope and peering at floating playful glowing speech bubbles with English words 'Hello' and 'Fun', 3D rendered style with gentle tactile rubber textures, warm bright studio lighting, soft joyful composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY3Dm8aHvMy9L3fbKG8oLQJOTKiNYctE_IH1N4cd10rEnRYxKUGlexaAzTmf3TzjJ_mJcyrlb0Bw3vL9_DodTkn6dcF_LOfN8tAWCE6tR57QzErI09CTFSBVKmmnU4dsj7dgHxxLzvmR7QMrWAa7lDLga5g8gNKApDrUsxC09axxwyc6IuhORh93E-obdtZBTDh8fKPJal5qvpQr6EseLdfTr_EaW6aAfGa4ExMvg"/>
+<!-- Speech Badge Float -->
+<div class="absolute -bottom-1 -left-1 bg-tertiary-fixed text-on-tertiary-fixed px-1.5 py-0.5 rounded-md font-english-phonics-pill text-[12px] font-extrabold shadow-sm -rotate-3">
+            Hi! 👋
+          </div>
+</div>
+</div>
+<!-- Tactile Floor Lip -->
+<div class="absolute bottom-0 left-0 right-0 h-1.5 bg-outline-variant/30 rounded-b-lg" id="lip-7-8"></div>
+</div>
+</div>
+<!-- Bottom Action & Parental Reassurance Section -->
+<div class="w-full max-w-md mx-auto mt-8 flex flex-col items-center">
+<!-- Primary CTA Chunky Button -->
+<button class="group relative w-full h-14 rounded-full bg-primary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-[0_6px_0_0_#1f1485] hover:shadow-[0_4px_0_0_#1f1485] active:shadow-[0_0px_0_0_transparent] active:translate-y-1.5 transition-all duration-150 cursor-pointer" id="submit-age-btn" onclick="handleContinue()" type="button">
+<span>המשך למסע הלימודי</span>
+<span class="text-xl">✨</span>
+<span class="material-symbols-outlined text-[24px] transform group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</button>
+<!-- Parental Guardian Badge / Reassurance Note -->
+<div class="flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-surface-container/70 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span>אפשר לשנות את הגיל בכל עת מאזור ההורים</span>
+</div>
+<!-- Soft Audio Mascot Prompt Badge -->
+<div class="flex items-center gap-2 mt-3 text-outline text-[13px]">
+<span class="material-symbols-outlined text-[16px]">touch_app</span>
+<span>בחרו את הגיל כדי לכוון את דרגת הקושי</span>
+</div>
+</div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-home" data-screen="home" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop App Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Home</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full pb-6 gap-y-5" dir="rtl">
+<!-- Top Child Profile Greeting & Rewards Bar -->
+<section class="w-full flex items-center justify-between bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center shadow-inner overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Charming 3D rendered joyful lion cub avatar smiling warmly, vibrant colors, child-friendly illustration style on soft sky-blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Uo4QWHmdEr16Q7lD_n3x1KpbEeH-thxH-kBzUwHWSRuGGvdi-I7ZB0kIfGEje2LlvyW-F7IAGRZHAeZuCt_uwtl2W9ellt10p_HvsyanPvCBwcMb9uu-uscH8BQY4JlmGzk8WQA6PhKii_AmLxqdkQ3bLzs3ls8fXxE7pC-EeC4x5mJkjRl9X0nZJb4duXpmUgk7PgSRif3_MVh2Vcfwq1h4R2OgaThxvKAOIgI"/>
+</div>
+<div class="absolute -bottom-1 -left-1 bg-secondary-container text-on-secondary-container w-6 h-6 rounded-full flex items-center justify-center text-[12px] shadow-sm font-label-chunky">
+          🦁
+        </div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm text-on-surface">בוקר טוב, איתי!</span>
+<span class="text-xl">🌟</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">מוכנים למשחק חדש?</span>
+</div>
+</div>
+<!-- Counters: Streaks & Stars -->
+<div class="flex items-center gap-2">
+<!-- Streak Badge -->
+<div class="flex items-center gap-1 bg-surface-container-high px-3 py-1.5 rounded-full shadow-sm">
+<span class="text-base select-none">🔥</span>
+<span class="font-label-chunky text-label-chunky text-tertiary-container">3</span>
+</div>
+<!-- Star Badge -->
+<div class="flex items-center gap-1 bg-surface-container-high px-3 py-1.5 rounded-full shadow-sm">
+<span class="text-base select-none">⭐</span>
+<span class="font-label-chunky text-label-chunky text-tertiary">24</span>
+</div>
+</div>
+</section>
+<!-- Hero Section: Today's Lesson -->
+<section class="w-full relative overflow-hidden bg-surface-container-lowest rounded-lg p-space-md shadow-md flex flex-col gap-4">
+<!-- Soft Decorative Glow Behind -->
+<div class="absolute -top-12 -left-12 w-44 h-44 bg-primary-fixed rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div class="absolute -bottom-10 -right-10 w-36 h-36 bg-secondary-fixed rounded-full blur-2xl opacity-40 pointer-events-none"></div>
+<div class="relative z-10 flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 bg-primary-fixed px-3 py-1 rounded-full text-on-primary-fixed">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm">השיעור של היום • 5 דקות</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold bg-surface-container px-2.5 py-0.5 rounded-full">שלב 4</span>
+</div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">חיות חמודות</h2>
+<span class="font-english-phonics-pill text-english-phonics-pill text-primary" dir="ltr">(Animals)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">נלמד לקרוא, להקשיב ולהגות 4 מילים באנגלית!</p>
+</div>
+<!-- Preview Chips (LTR Phonetics Display for English) -->
+<div class="relative z-10 w-full bg-surface-container-low rounded-xl p-3 shadow-inner">
+<div class="flex items-center justify-between text-center gap-2" dir="ltr">
+<!-- Word 1 -->
+<div class="flex-1 flex flex-col items-center bg-surface-container-lowest p-2 rounded-lg shadow-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-xl mb-1 shadow-sm">
+            🐶
+          </div>
+<span class="font-label-chunky text-label-chunky text-on-surface">DOG</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[11px]" dir="rtl">כֶּלֶב</span>
+</div>
+<!-- Word 2 -->
+<div class="flex-1 flex flex-col items-center bg-surface-container-lowest p-2 rounded-lg shadow-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-xl mb-1 shadow-sm">
+            🐱
+          </div>
+<span class="font-label-chunky text-label-chunky text-on-surface">CAT</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[11px]" dir="rtl">חָתוּל</span>
+</div>
+<!-- Word 3 -->
+<div class="flex-1 flex flex-col items-center bg-surface-container-lowest p-2 rounded-lg shadow-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-xl mb-1 shadow-sm">
+            🐟
+          </div>
+<span class="font-label-chunky text-label-chunky text-on-surface">FISH</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[11px]" dir="rtl">דָּג</span>
+</div>
+<!-- Word 4 -->
+<div class="flex-1 flex flex-col items-center bg-surface-container-lowest p-2 rounded-lg shadow-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-xl mb-1 shadow-sm">
+            🦁
+          </div>
+<span class="font-label-chunky text-label-chunky text-on-surface">LION</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[11px]" dir="rtl">אַרְיֵה</span>
+</div>
+</div>
+</div>
+<!-- Playful Chunky 3D CTA Button -->
+<button class="relative z-10 w-full min-h-[64px] bg-primary text-on-primary rounded-full font-label-chunky text-label-chunky shadow-[0_6px_0_0_#231796] active:translate-y-1 active:shadow-[0_2px_0_0_#231796] transition-all flex items-center justify-center gap-2 select-none" id="start-lesson-btn">
+<span class="text-xl">▶️</span>
+<span>בוא נתחיל עכשיו!</span>
+</button>
+</section>
+<!-- Learning Adventure Path Section: 'המסלול שלי' -->
+<section class="w-full bg-surface-container-lowest rounded-lg p-space-md shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-2xl">🗺️</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">המסלול שלי</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">אי האלפבית</span>
+</div>
+<!-- Visual Interactive Path Container -->
+<div class="relative w-full py-4 flex flex-col items-center gap-8">
+<!-- Sinuous Connector SVG Track -->
+<svg class="absolute top-8 w-44 h-72 text-surface-container pointer-events-none" fill="none" viewbox="0 0 160 280">
+<path d="M 80,20 C 130,50 140,110 80,140 C 20,170 30,230 80,260" stroke="currentColor" stroke-dasharray="1 18" stroke-linecap="round" stroke-width="14"></path>
+</svg>
+<!-- Milestone 3 (Locked): Top / Ahead -->
+<div class="relative z-10 flex flex-col items-center group">
+<div class="w-20 h-20 rounded-full bg-surface-container text-on-surface-variant flex flex-col items-center justify-center shadow-inner relative opacity-85">
+<span class="material-symbols-outlined text-[32px] text-outline">lock</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">שלב 3</span>
+</div>
+<div class="mt-2 text-center">
+<span class="font-label-chunky text-label-chunky text-outline-variant block">Wild Safari</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">נעול כרגע 🔒</span>
+</div>
+</div>
+<!-- Milestone 2 (Active / Pulse): Middle -->
+<div class="relative z-10 flex flex-col items-center">
+<!-- Floating Mascot pointer -->
+<div class="absolute -top-7 animate-bounce bg-secondary text-on-secondary px-3 py-0.5 rounded-full font-label-sm text-label-sm shadow-md flex items-center gap-1">
+<span>אנחנו כאן!</span>
+<span class="text-sm">👇</span>
+</div>
+<!-- Pulsing Button Target -->
+<div class="relative flex items-center justify-center">
+<span class="absolute w-24 h-24 rounded-full bg-primary-fixed animate-ping opacity-60"></span>
+<button class="relative w-22 h-22 p-5 rounded-full bg-primary text-on-primary shadow-[0_6px_0_0_#231796] flex flex-col items-center justify-center active:translate-y-1 active:shadow-[0_1px_0_0_#231796] transition-all">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="mt-2 text-center bg-surface-container-high px-4 py-1.5 rounded-full shadow-sm">
+<span class="font-label-chunky text-label-chunky text-primary block">Friends &amp; Pets</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">חיות מחמד וחברים</span>
+</div>
+</div>
+<!-- Milestone 1 (Completed): Bottom / Start -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-18 h-18 rounded-full bg-surface-container-highest flex flex-col items-center justify-center p-3 shadow-md relative">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- 3 Stars Achieved -->
+<div class="absolute -bottom-2 flex items-center gap-0.5 bg-surface-container-lowest px-2 py-0.5 rounded-full shadow-sm">
+<span class="text-xs">⭐</span>
+<span class="text-xs">⭐</span>
+<span class="text-xs">⭐</span>
+</div>
+</div>
+<div class="mt-3 text-center">
+<span class="font-label-chunky text-label-chunky text-on-surface">Animals Intro</span>
+<span class="font-label-sm text-label-sm text-primary font-bold block">הושלם בהצלחה! 🏆</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Practice Card: 'חזרה מהירה' -->
+<section class="w-full bg-surface-container-low rounded-lg p-space-md shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed flex items-center justify-center shadow-sm text-2xl flex-shrink-0">
+        🃏
+      </div>
+<div class="flex flex-col">
+<div class="inline-flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-secondary font-bold">חזרה מהירה</span>
+<span class="text-xs text-on-surface-variant">• 2 דקות</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">משחק הזיכרון של אתמול</h4>
+<span class="font-body-md text-body-md text-on-surface-variant">חיזוק מילים: Apple, Ball, Cat</span>
+</div>
+</div>
+<button class="w-12 h-12 rounded-full bg-surface-container-lowest text-primary shadow-[0_3px_0_0_#c3c0ff] flex items-center justify-center active:translate-y-0.5 active:shadow-none flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+</section>
+<!-- Interactive Feedback Pill Canvas -->
+<div class="pointer-events-none fixed inset-0 z-50 overflow-hidden" id="sparkle-layer"></div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-lesson" data-screen="lesson" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-8 select-none">
+<!-- Progress & Context Header Bar -->
+<div class="flex items-center justify-between gap-space-sm mb-space-md">
+<button aria-label="סגור שיעור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<div class="flex-1 flex flex-col gap-1.5 px-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">חיות (Animals)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">1 מתוך 4</span>
+</div>
+<!-- Pill Segmented Progress Bar -->
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden flex p-0.5">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 25%;"></div>
+</div>
+</div>
+<!-- Star / Energy Reward Mini-Badge -->
+<div class="flex items-center gap-1 bg-surface-container-low px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[20px]" style="font-variation-settings: 'FILL' 1;">kid_star</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">120</span>
+</div>
+</div>
+<!-- Main Tactile Learning Card -->
+<div class="relative w-full rounded-lg bg-surface-container-lowest p-space-md shadow-xl flex flex-col items-center overflow-hidden">
+<!-- Faint Joyful Aura Backdrop Accent -->
+<div class="absolute -top-16 -left-16 w-48 h-48 rounded-full bg-primary-fixed-dim/30 blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-tertiary-fixed/30 blur-2xl pointer-events-none"></div>
+<!-- Category Pill Tag -->
+<div class="relative z-10 self-start inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-primary mb-space-xs">
+<span class="material-symbols-outlined text-[16px]">pets</span>
+<span class="font-label-sm text-label-sm font-semibold">אוצר מילים ראשון</span>
+</div>
+<!-- Hero Illustration of Golden Puppy -->
+<div class="relative w-full max-w-[260px] aspect-square my-space-xs flex items-center justify-center">
+<img class="w-full h-full object-contain filter drop-shadow-md transition-transform duration-300 active:scale-105" data-alt="High quality clean 3D claymation and vector hybrid illustration of an adorable cheerful golden retriever puppy sitting happily with sparkling expressive eyes and soft floppy ears, playful vibrant pastel aesthetic on gentle cream backdrop designed for children app" id="puppy-mascot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVjy2WK1h8AOpJraQIIaFbCP18Cua6bd9g1Mcex_nNv-TexjOavcQcZt0kee-BQp06NPaYhuXRSJDmnebANvn5QHw1IuppPSAO2Qk310iLesdzNT5vIFaZOJR5dB2B4c_SoMbIQGwcA1xhAQybCrxRXwJ9YbOg_3amoTH-qQi30RSvWqzeZElXKxbPGfB4EWD2ho2ix8OOajB4KEnPSXOIdtWRxd-g898jhJ9Thcg"/>
+<!-- Tactile Sound Effect Badge Overlay -->
+<div class="absolute top-2 right-2 bg-surface-container-high/90 backdrop-blur-md rounded-full px-2.5 py-1 text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-1">
+<span>🐾</span>
+<span class="font-bold">Woof!</span>
+</div>
+</div>
+<!-- English Word Focus (Isolated LTR) -->
+<div class="w-full flex flex-col items-center justify-center my-space-xs text-center" dir="ltr">
+<div class="inline-block px-8 py-2 rounded-2xl bg-surface-container-low shadow-sm">
+<span class="font-english-word-display text-english-word-display text-primary tracking-wider font-extrabold select-all">DOG</span>
+</div>
+</div>
+<!-- Hebrew Translation with Clear Nikud -->
+<div class="flex items-center justify-center gap-2 mt-1 mb-space-md text-center">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">כֶּלֶב</h2>
+</div>
+<!-- Tactile Audio Button with Pulsing Wave Rings -->
+<div class="relative flex items-center justify-center my-space-xs">
+<!-- Pulsing Rings -->
+<div class="absolute w-24 h-24 rounded-full bg-primary/10 animate-ping pointer-events-none" style="animation-duration: 2.2s;"></div>
+<div class="absolute w-20 h-20 rounded-full bg-primary/15 animate-pulse pointer-events-none"></div>
+<!-- Action Button -->
+<button aria-label="השמע מילה" class="relative z-10 flex items-center gap-space-sm px-6 h-14 rounded-full bg-primary text-on-primary shadow-lg active:translate-y-1 transition-all" id="sound-btn" type="button">
+<span class="material-symbols-outlined text-[28px] text-on-primary" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<span class="font-label-chunky text-label-chunky font-bold">הקשיבו לצליל</span>
+</button>
+</div>
+</div>
+<!-- Interactive Instruction & Prompt Banner -->
+<div class="flex flex-col gap-space-xs mt-space-md">
+<div class="flex items-center gap-space-xs px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px] text-primary">touch_app</span>
+<p class="font-body-md text-body-md font-medium">לחצו על הרמקול כדי לשמוע איך אומרים <span class="font-bold text-primary" dir="ltr">DOG</span> באנגלית!</p>
+</div>
+<!-- Microphone & Practice Repetition Chip Card -->
+<div class="w-full p-space-sm rounded-lg bg-surface-container flex items-center justify-between gap-space-sm transition-all hover:bg-surface-container-high cursor-pointer shadow-sm active:scale-[0.98]" id="mic-card">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">תרגול דיבור</span>
+<span class="font-body-md text-body-md text-on-surface-variant">נסו לחזור בעצמכם: "דּוֹג"</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+</div>
+</div>
+<!-- Bottom Forward Tactile Action -->
+<div class="mt-space-lg w-full">
+<button class="w-full h-16 rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold shadow-xl flex items-center justify-center gap-space-sm active:translate-y-1 transition-all" id="continue-btn" type="button">
+<span>מצוין! למילה הבאה</span>
+<span class="material-symbols-outlined text-[26px]">arrow_back</span>
+</button>
+</div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-practice" data-screen="practice" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="spring-touch w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="spring-touch w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="spring-touch w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-6 gap-y-4 select-none">
+<!-- Progress & Motivational Tracker Pill -->
+<div class="animate-stagger-1 w-full flex items-center justify-between bg-surface-container-lowest rounded-full px-4 py-2.5 shadow-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-container text-[22px] transition-transform duration-300 hover:scale-125" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined text-secondary-container text-[22px] transition-transform duration-300 hover:scale-125" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined text-secondary-container text-[22px] transition-transform duration-300 hover:scale-125" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<!-- Segmented Lesson Dots (Step 3 of 4) -->
+<div class="flex items-center gap-1.5" dir="ltr">
+<div class="w-6 h-2.5 rounded-full bg-primary-container"></div>
+<div class="w-6 h-2.5 rounded-full bg-primary-container"></div>
+<div class="w-6 h-2.5 rounded-full bg-primary-container shadow-[0_0_8px_rgba(79,70,229,0.4)]"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="spring-touch flex items-center gap-1 bg-tertiary-fixed/60 px-2.5 py-1 rounded-full cursor-default active:scale-95">
+<span class="material-symbols-outlined text-tertiary text-[18px] transition-transform duration-300 group-hover:rotate-45" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-chunky text-label-chunky text-on-tertiary-fixed leading-none">120</span>
+</div>
+</div>
+<!-- Instruction Bar with Audio Trigger -->
+<div class="animate-stagger-2 bg-surface-container-low rounded-2xl p-3.5 flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<button aria-label="השמע הוראה" class="spring-touch w-10 h-10 shrink-0 rounded-full bg-primary-fixed flex items-center justify-center text-primary active:scale-90 transition-transform shadow-[0_3px_0_0_#c3c0ff]">
+<span class="material-symbols-outlined text-[22px]">volume_up</span>
+</button>
+<p class="font-headline-sm text-headline-sm text-on-surface truncate">
+        הקשיבו לצליל ובחרו בחיה הנכונה!
+      </p>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+      שלב 3/4
+    </span>
+</div>
+<!-- Big Interactive Tactile Audio Speaker Hero -->
+<div class="animate-stagger-3 relative w-full bg-surface-container-lowest rounded-3xl p-5 flex flex-col items-center justify-center text-center shadow-md overflow-hidden">
+<!-- Playful Ambient Background Waves -->
+<div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-primary-fixed/20 pointer-events-none transition-transform duration-700"></div>
+<div class="absolute -left-6 -bottom-6 w-24 h-24 rounded-full bg-tertiary-fixed/30 pointer-events-none transition-transform duration-700"></div>
+<div class="relative flex items-center justify-center my-1">
+<!-- Dynamic Animated Sound Wave Rings -->
+<span class="sound-pulse-ring-1 absolute inline-flex h-24 w-24 rounded-full bg-primary/25 pointer-events-none"></span>
+<span class="sound-pulse-ring-2 absolute inline-flex h-20 w-20 rounded-full bg-primary/30 pointer-events-none"></span>
+<!-- Tactile Speaker Button -->
+<button class="spring-touch relative z-10 w-20 h-20 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-[0_6px_0_0_#3730a3] active:translate-y-1 active:shadow-[0_2px_0_0_#3730a3] transition-all cursor-pointer" id="mainAudioBtn">
+<span class="material-symbols-outlined text-[36px] transition-transform duration-150" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<!-- Phonics Guidance Pill (LTR) -->
+<div class="mt-4 flex flex-col items-center gap-1">
+<div class="spring-touch flex items-center gap-2 bg-surface-container px-3.5 py-1 rounded-full text-primary active:scale-95 cursor-pointer" dir="ltr">
+<span class="font-english-word-display text-[22px] tracking-wider font-extrabold">DOG</span>
+<span class="text-outline font-body-md text-[14px]">/dɒɡ/</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">הקש להאזנה שוב ושוב 🐾</span>
+</div>
+</div>
+<!-- The 2x2 Interactive Game Manipulatives Grid -->
+<div class="animate-stagger-4 grid grid-cols-2 gap-3.5 w-full">
+<!-- Option 1: Selected & Correct State (DOG) -->
+<div class="float-card-1 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-dog">
+<!-- Selected State Indicator Badge -->
+<div class="absolute -top-2 -right-2 z-20 w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md animate-bounce" id="dogCheckBadge">
+<span class="material-symbols-outlined text-[20px] font-bold">check</span>
+</div>
+<!-- Joyful Sparkle Badge -->
+<div class="absolute -top-2 -left-2 z-20 w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shadow-sm transition-transform duration-300 hover:rotate-180">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<!-- Rich Illustration Placeholder -->
+<div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Chunky 3D clay-style golden retriever puppy sitting happily with big friendly eyes and a wagging tail, rendered in warm pastel lighting on a clean neutral background, heirloom toy aesthetic suitable for early childhood learning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAtbleuxmGdq_s_sotaeC89DT5RV6MSpYLgi4t9HRqBnLLnwUZoTNypRN99poH5U-CEwDE6HiUp2eTMLSC-Ayovsg-2_y4OXWWYuGk4EjGbrjkf5x2fJvrEIveDKcplUnsLcReukM4CBtQ5hSpom0tP4vT7njN9XXvuegR6QYehAi5YOlRdN27DWppQPVqqaWQLHTq6S-Q4-sMFsUsK0PWFXUI5yhex7bGQ5-SHqE"/>
+</div>
+<!-- Bilingual Label Container -->
+<div class="mt-2.5 flex flex-col items-center w-full">
+<span class="font-english-phonics-pill text-english-phonics-pill text-primary" dir="ltr">Dog</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">כֶּלֶב</span>
+</div>
+<!-- Selection Indicator Underline Glow -->
+<div class="w-12 h-1 rounded-full bg-primary-container mt-1 shadow-[0_0_6px_rgba(79,70,229,0.5)]"></div>
+</div>
+<!-- Option 2: CAT -->
+<div class="float-card-2 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-cat">
+<div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Cute friendly ginger cat with rounded paws and curious round eyes playfully resting, soft plasticine or wooden toy finish, gentle daylight pastel colors on minimal backdrop, delightful kid-friendly design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT4pgpU6s-5wD6huwLNww0SVo_xXOMz5MdVNvIoKnN4NOhuT05lFManmiU8aYzbO2XSgoEyXKU8UM9VvnaPgARvc8zBt4UC4e2aUffTabt5g8Bh_Wl8d-7AkjLrU5ZA1RGzUKWGgHhfEjEvxXWDUMTt1pkTNlNCTA8LZGznMQb2_wedLOxe1IuhAl6xt-s4YwU3pCVczpwJ6WEB-0gKDWr6cH0h_pUPVRYXB9abN8"/>
+</div>
+<div class="mt-2.5 flex flex-col items-center w-full">
+<span class="font-english-phonics-pill text-english-phonics-pill text-on-surface" dir="ltr">Cat</span>
+<span class="font-label-sm text-label-sm text-outline">חָתוּל</span>
+</div>
+<div class="w-12 h-1 rounded-full bg-transparent mt-1"></div>
+</div>
+<!-- Option 3: FISH -->
+<div class="float-card-3 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-fish">
+<div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Stylized playful orange and yellow tropical clownfish smiling underwater with soft bubbling water drops, rounded forms, smooth toy block texture, clean vibrant aesthetic for toddlers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqZNukBAzT63imqsD31Y08U9Nu87tVd489oLhDBjskFGLNDfezyF3XclV7VXgI83FwJBVhUke7FShkissSZN8f9lZBzTOiKHMLmQESoo7HoevtDn5eYFmlnBCv9JLFs6dkFcmIo1AUXAMQJLI_mSmclfOkSAYL1WI1ulO9QORNEVGXbVOHW7rrLIWFnlYVDCxjHvj9HKJlCpvSGUh9tefaCSk6Oh_3Bl4aIy0gh7g"/>
+</div>
+<div class="mt-2.5 flex flex-col items-center w-full">
+<span class="font-english-phonics-pill text-english-phonics-pill text-on-surface" dir="ltr">Fish</span>
+<span class="font-label-sm text-label-sm text-outline">דָּג</span>
+</div>
+<div class="w-12 h-1 rounded-full bg-transparent mt-1"></div>
+</div>
+<!-- Option 4: LION -->
+<div class="float-card-4 spring-touch relative flex flex-col items-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-transform duration-200 active:scale-95 cursor-pointer" id="card-lion">
+<div class="w-full h-28 rounded-xl overflow-hidden bg-surface-container-low relative shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Gentle smiling baby lion cub with a fluffy rounded mane, styled as a soft high-end children collectible figurine, warm sunny tones, joyful tactile surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEC47D-fk8mU7bz4yBsqasxIVzZ5ozKTVUrAVNLiCRxxV1caTUw6ydiXfFZ6fBf426omwqbuVXSEP1WSbSftSUv8OVYfaiPPp6pXuGtM7mGCR-IZYaf85CRp8DVgWHU2wcmG8Lfx4lci3k-cIl10ji9AtABpdpbPRM_GVz-ogrnp9cMjvXQXVsqfZVC3EIvQJz9v39uHWORtJNlNB-E2nKEOrQ3ZUkaGN9eR5UqMc"/>
+</div>
+<div class="mt-2.5 flex flex-col items-center w-full">
+<span class="font-english-phonics-pill text-english-phonics-pill text-on-surface" dir="ltr">Lion</span>
+<span class="font-label-sm text-label-sm text-outline">אַרְיֵה</span>
+</div>
+<div class="w-12 h-1 rounded-full bg-transparent mt-1"></div>
+</div>
+</div>
+<!-- Interactive Hint Mascot Chip -->
+<button class="animate-stagger-5 spring-touch w-full flex items-center justify-center gap-2.5 py-2.5 px-4 bg-tertiary-fixed/40 hover:bg-tertiary-fixed/60 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-tertiary-container text-[20px] transition-transform duration-300 hover:rotate-12">lightbulb</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-fixed-variant">
+      צריכים עזרה? הקש להאזנה בקצב איטי (Slow audio)
+    </span>
+</button>
+<!-- Feedback & Action Footer Section -->
+<div class="animate-stagger-6 w-full flex flex-col gap-3 mt-1">
+<!-- Success Celebration Banner -->
+<div class="spring-touch flex items-center justify-between p-3.5 bg-surface-container-lowest rounded-2xl shadow-sm transition-all hover:shadow-md" id="celebrationBanner">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 shadow-sm transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined text-[26px]">celebration</span>
+</div>
+<div class="flex flex-col">
+<p class="font-headline-sm text-headline-sm text-on-surface">מעולה! בחרת נכון! 🎉</p>
+<p class="font-body-md text-[14px] text-on-surface-variant" dir="ltr">"That's a Dog! Good job!"</p>
+</div>
+</div>
+<span class="font-headline-md text-headline-md text-primary font-bold transition-transform duration-200 hover:scale-110">+20</span>
+</div>
+<!-- Chunky Tactile Next Action Button -->
+<button class="spring-touch w-full h-[62px] rounded-full bg-primary-container text-on-primary flex items-center justify-center gap-3 shadow-[0_5px_0_0_#3730a3] active:translate-y-1 active:shadow-[0_1px_0_0_#3730a3] transition-all cursor-pointer" id="nextActionBtn">
+<span class="font-label-chunky text-label-chunky tracking-wide">המשך לשלב הבא</span>
+<span class="material-symbols-outlined text-[24px] transition-transform duration-200 group-hover:-translate-x-1">arrow_back</span>
+</button>
+</div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-sentence" data-screen="sentence" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="חזור" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-90" onclick="LP.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><img alt="LingoPop App Logo" class="h-8 w-auto object-contain hidden sm:block" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Active Lesson</h1><div class="flex items-center gap-space-xs"><button aria-label="צליל" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90" type="button"><span class="material-symbols-outlined text-[24px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-28">
+<!-- Progress & Rewards Island -->
+<div class="w-full flex items-center justify-between gap-space-sm mb-space-md pt-2">
+<!-- Star Counter Pill -->
+<div class="flex items-center gap-1.5 bg-surface-container-high px-3.5 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-chunky text-label-chunky text-on-surface">140</span>
+</div>
+<!-- Segmented Lesson Progress -->
+<div class="flex-1 max-w-[190px] flex items-center gap-1.5 bg-surface-container-low p-1.5 rounded-full">
+<div class="h-2.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-2.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-2.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-2.5 flex-1 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Step Badge -->
+<div class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">extension</span>
+<span class="font-label-sm text-label-sm font-bold">שלב 3 מתוך 4</span>
+</div>
+</div>
+<!-- Activity Header Label -->
+<div class="flex items-center justify-between mb-space-xs">
+<div class="inline-flex items-center gap-1.5 bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px]">draw</span>
+<span class="font-label-sm text-label-sm">בניית משפט ראשון</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">הקשיבו ולחצו על המילים</span>
+</div>
+<!-- Hero Visual & Sentence Construction Card -->
+<div class="w-full bg-surface-container-lowest rounded-lg p-space-md shadow-md flex flex-col items-center mb-space-md">
+<!-- Illustration Container -->
+<div class="w-full h-44 rounded-DEFAULT overflow-hidden relative mb-space-md bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Delightful and warm 3D animated golden retriever puppy sitting happily in a sunny green grassy room with soft pastel playroom blocks. The puppy has sparkling curious eyes, a soft playful smile, warm studio illumination, smooth plasticine toy aesthetic, joyful clean educational style with subtle violet and indigo accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPhzUopZG66W51rTrH1TdPx87JqidcCIMouUoFNmLhEijjCmCE_wtzb4X8fJ65Wm1RsCl9bFu3lggVDsG9VPli2trczUPddT3aqMxSUE9XkXLko7xIW7d_FZfY5HOTFkeLSzDaY4yadSlIXbLNGfjNcPNphj5CfnJa1lAlUjJzLAou0dDNhis-Cg11fH2jqJ44p-nI99TTbd1culTgHnkHoMkGh8Jn8e_o1vCA5s"/>
+<!-- Playful Floating Sparkle Badge -->
+<div class="absolute top-2.5 right-2.5 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full px-2.5 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Puppy</span>
+</div>
+</div>
+<!-- Tactile English Sentence Chips (Strict LTR alignment) -->
+<div class="w-full flex flex-wrap items-center justify-center gap-2 mb-space-sm" dir="ltr" id="sentence-chips">
+<!-- Word Chip: This -->
+<button class="h-14 px-4 bg-surface-container-low hover:bg-surface-container text-on-surface font-english-phonics-pill text-english-phonics-pill rounded-DEFAULT shadow-[0_4px_0_0_#c7c4d8] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center cursor-pointer select-none" onclick="speakWord(this, 'This')" type="button">
+        This
+      </button>
+<!-- Word Chip: is -->
+<button class="h-14 px-4 bg-surface-container-low hover:bg-surface-container text-on-surface font-english-phonics-pill text-english-phonics-pill rounded-DEFAULT shadow-[0_4px_0_0_#c7c4d8] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center cursor-pointer select-none" onclick="speakWord(this, 'is')" type="button">
+        is
+      </button>
+<!-- Word Chip: a -->
+<button class="h-14 px-3.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-english-phonics-pill text-english-phonics-pill rounded-DEFAULT shadow-[0_4px_0_0_#c7c4d8] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center cursor-pointer select-none" onclick="speakWord(this, 'a')" type="button">
+        a
+      </button>
+<!-- Word Chip: dog. (Hero Target Word) -->
+<button class="h-14 px-4 bg-primary text-on-primary font-english-phonics-pill text-english-phonics-pill rounded-DEFAULT shadow-[0_4px_0_0_#0f0069] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1.5 cursor-pointer select-none" onclick="speakWord(this, 'dog')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span>dog.</span>
+</button>
+</div>
+<!-- Hebrew Translation & Phonetic Guide -->
+<div class="flex flex-col items-center text-center gap-0.5 mb-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">זהו כלב.</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-normal tracking-wide">(דִּיס אִיז אָה דּוֹג)</span>
+</div>
+<!-- Full Sentence Audio Player Strip -->
+<button class="w-full bg-primary-fixed hover:bg-primary-fixed-dim text-on-primary-fixed py-3 px-4 rounded-full flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer" id="play-sentence-btn" onclick="playFullSentence()" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[26px] text-primary" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<span class="font-label-chunky text-label-chunky font-bold">הקשיבו למשפט המלא</span>
+</div>
+<!-- Ambient Visual Waveform Bars -->
+<div class="flex items-end gap-1 h-5 pl-2" id="waveform">
+<span class="w-1 h-2 bg-primary rounded-full transition-all duration-200"></span>
+<span class="w-1 h-4 bg-primary rounded-full transition-all duration-200"></span>
+<span class="w-1 h-3 bg-primary rounded-full transition-all duration-200"></span>
+<span class="w-1 h-5 bg-primary rounded-full transition-all duration-200"></span>
+<span class="w-1 h-2 bg-primary rounded-full transition-all duration-200"></span>
+</div>
+</button>
+</div>
+<!-- Interactive Speech Practice Container -->
+<div class="w-full bg-surface-container-low rounded-lg p-space-md flex flex-col items-center mb-4">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[20px] text-secondary">record_voice_over</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">עכשיו תורכם להגיד!</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-space-md">
+      לחצו על המיקרופון ואמרו באנגלית: <span class="font-bold text-primary" dir="ltr">"This is a dog"</span>
+</p>
+<!-- Recording Controls Cluster -->
+<div class="flex items-center justify-center gap-4 mb-space-sm">
+<!-- Listen Back Button (Initially Muted) -->
+<button aria-label="האזנה להקלטה שלך" class="w-14 h-14 rounded-full bg-surface-container-highest text-outline flex items-center justify-center transition-all cursor-not-allowed" disabled="" id="playback-btn" onclick="playUserRecording()" type="button">
+<span class="material-symbols-outlined text-[26px]">play_arrow</span>
+</button>
+<!-- Chunky Hero Record Button -->
+<button class="relative w-20 h-20 rounded-full bg-secondary-container text-on-secondary-container shadow-[0_5px_0_0_#a93349] active:translate-y-1 active:shadow-none flex items-center justify-center transition-all cursor-pointer" id="record-btn" onclick="toggleRecording()" type="button">
+<span class="material-symbols-outlined text-[36px]" id="record-icon">mic</span>
+<!-- Animated Recording Ping Ring -->
+<span class="hidden absolute inset-0 rounded-full bg-secondary-container/40 animate-ping" id="record-pulse"></span>
+</button>
+<!-- Reset / Try Again Button -->
+<button aria-label="הקלטה מחדש" class="w-14 h-14 rounded-full bg-surface-container-highest text-outline flex items-center justify-center transition-all cursor-not-allowed" disabled="" id="reset-btn" onclick="resetRecording()" type="button">
+<span class="material-symbols-outlined text-[22px]">refresh</span>
+</button>
+</div>
+<!-- Live Status Pill & Bonus Points Preview -->
+<div class="flex items-center gap-2 mt-1">
+<div class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full flex items-center gap-1.5 transition-all" id="status-pill">
+<span class="w-2 h-2 rounded-full bg-outline" id="status-dot"></span>
+<span class="font-label-sm text-label-sm" id="status-text">מוכן להקלטה</span>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full flex items-center gap-1 font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>+20 כוכבים!</span>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom CTA Section -->
+<div class="fixed bottom-0 left-0 right-0 p-margin bg-surface/90 backdrop-blur-md z-40 flex items-center justify-center">
+<div class="w-full max-w-[420px]">
+<button class="w-full h-[62px] bg-primary-container text-on-primary font-headline-sm text-headline-sm rounded-full shadow-[0_5px_0_0_#3323cc] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer" id="continue-button" onclick="completeStep()" type="button">
+<span>מצוין! סיום השיעור</span>
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-progress" data-screen="progress" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop App Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">Home</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full gap-space-lg select-none">
+<!-- Top Progress Island / Stats Strip -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">ההתקדמות שלי</h2>
+</div>
+<div class="bg-primary-fixed/60 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-primary-fixed font-bold">רמה 3</span>
+</div>
+</div>
+<!-- Summary Bar Cards -->
+<div class="grid grid-cols-3 gap-space-sm pt-1">
+<!-- Stars Counter -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(13,28,46,0.04)] relative overflow-hidden transition-transform active:scale-95 cursor-pointer">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-sm text-headline-sm font-bold">340</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">כוכבים שנצברו</span>
+</div>
+<!-- Streak Pill -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(13,28,46,0.04)] relative overflow-hidden transition-transform active:scale-95 cursor-pointer">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-headline-sm text-headline-sm font-bold">4 ימים</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">רצף למידה</span>
+</div>
+<!-- Explorer Rank -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(13,28,46,0.04)] relative overflow-hidden transition-transform active:scale-95 cursor-pointer">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-headline-sm text-headline-sm font-bold">שביל 3</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">חוקר צעיר</span>
+</div>
+</div>
+</div>
+<!-- Section 1: Motivational Milestone Banner -->
+<div class="relative bg-surface-container-lowest rounded-lg p-space-md shadow-[0_8px_24px_rgba(53,37,205,0.07)] overflow-hidden">
+<div class="flex items-start gap-space-md">
+<!-- Mascot Cheerful Avatar -->
+<div class="relative shrink-0">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden shadow-inner">
+<img class="w-14 h-14 object-contain" data-alt="Playful friendly cartoon pop-fox mascot smiling wearing an explorer hat with soft round edges and soft indigo and coral accents, joyful educational character in modern 3D toy style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxuCTm5NnjZLgSwdhQaCXWWgMewJViOQnqsUnI_SKg87boo6P0R6WMZ-UYfrIxkySSOFkpyVyZZq-wOh3WcS7VLq4KTFzMmx6aNLtk5pf-6sveEwv7HjiDNktRa8x5hQD73f91S8gQmHxwu4WGNSYvu1wOLdvyN0ALPoFwZ-6a_E3o06JHY-lfhZ7BNC8k_aJ8-EkxNAKAZlmJiju49JoM3L8Cr0YOtnpIXGwY0RpfQUYZU07XXN8Y"/>
+</div>
+<div class="absolute -bottom-1 -left-1 bg-tertiary-fixed text-on-tertiary-fixed w-6 h-6 rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+</div>
+<!-- Content & Goal Bar -->
+<div class="flex-1 flex flex-col min-w-0">
+<div class="flex items-center justify-between gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">וואו איתי, איזה אלופים!</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">השלמת 75% מיעד השבוע שלך!</p>
+<!-- Segmented Smooth Progress -->
+<div class="mt-3 flex flex-col gap-1.5">
+<div class="w-full bg-surface-container h-3.5 rounded-full p-0.5 flex items-center overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-700 ease-out" style="width: 75%;"></div>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span>3 מתוך 4 שיעורים השבוע</span>
+<span class="text-primary font-bold">עוד שיעור 1 ליעד! 🎯</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Words I already know (Horizontal Gallery) -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">record_voice_over</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">מילים שאני כבר יודע להגיד</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold cursor-pointer active:opacity-75">הצג הכל</span>
+</div>
+<!-- Word Badges Horizontal Scroll -->
+<div class="flex gap-space-sm overflow-x-auto pb-2 pt-1 no-scrollbar -mx-margin px-margin">
+<!-- Word 1: DOG -->
+<div class="shrink-0 w-36 bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center shadow-[0_4px_12px_rgba(13,28,46,0.06)] transition-transform active:scale-95 cursor-pointer relative" onclick="playWordAudio('DOG')">
+<div class="absolute top-2.5 left-2.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
+<img class="w-14 h-14 object-contain" data-alt="Cute friendly golden puppy toy icon sitting happily, 3D gentle clay style with pastel warm background, soft rounded edges child educational app asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbkEB23g03cSA2lyYvhBo7tBuqYLuteIJZaTeLNlAYzTJGkdxSbcywYjrqSCc1C5Slybd5DjmfK_OMVbLFqnsx-EX3zxWOv0VGU579BaOcgon5uc1HSr_alMZKpK4eqZ9UdNGnD80KNL7awOmM8kAwC6tvSjXF0rAVctRLvUzD14-3hbozMxF1tc38PcoFasufs2DxZmuz4NMprr33M987acdL-QgnlOHJLzTO66HRcS_wn-fp8It4"/>
+</div>
+<!-- Isolated LTR English Word -->
+<div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
+          DOG
+        </div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">כֶּלֶב</span>
+<div class="mt-2.5 w-full bg-surface-container-high/60 py-1 px-2 rounded-full flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">volume_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">נלמד!</span>
+</div>
+</div>
+<!-- Word 2: CAT -->
+<div class="shrink-0 w-36 bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center shadow-[0_4px_12px_rgba(13,28,46,0.06)] transition-transform active:scale-95 cursor-pointer relative" onclick="playWordAudio('CAT')">
+<div class="absolute top-2.5 left-2.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
+<img class="w-14 h-14 object-contain" data-alt="Playful orange striped cartoon kitten sitting curiously, 3D soft toy style with gentle warm lighting, minimalist friendly child illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr_mXw6WOEzhy1XDIbXS8-nh3vn8ORLL5LGJcuZUaOnG3bc7tvHAJ_ROVhGYEb8bQQXDIBd3bybcakm4z0bhKtbwu2xG7ma8m2GHRE55bVPTrObm7hxfv98iogyk3bAzDJNyfpQgzrE7ovkTxauyit8a1_f1PmCKjMMaUF7rAlV88yJ6y2OwLKU1lvXFFN93DTd7Hl_YQxuZ5rZGuqsGC7CejY6q_kX57GxhNN81r-mrYlERtEMmHn"/>
+</div>
+<div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
+          CAT
+        </div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">חָתוּל</span>
+<div class="mt-2.5 w-full bg-surface-container-high/60 py-1 px-2 rounded-full flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">volume_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">נלמד!</span>
+</div>
+</div>
+<!-- Word 3: FISH -->
+<div class="shrink-0 w-36 bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center shadow-[0_4px_12px_rgba(13,28,46,0.06)] transition-transform active:scale-95 cursor-pointer relative" onclick="playWordAudio('FISH')">
+<div class="absolute top-2.5 left-2.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
+<img class="w-14 h-14 object-contain" data-alt="Cheerful tiny blue and yellow clownfish swimming playfully, rounded bubbly fins, 3D toy styling on clean pastel sky background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyH8fGUMlxKPxcHUOKfGVoWx5iQAj_2d1HtvWrogJQNLnNXKkpi3x7ckOwC9umg91k37jxzSNy2eZOb-MqGfwHvnZe4GMy5WACDEwpm62ntP58_mr_jchCLL_8oXvbqoorDvJ5Q3mi29MrXXuPLk8vkeIQ_pBFj1skCQydRKzdeijpk-fXGyrgvmVNhcg6nYKZin8ZMg8Y31sLeAvKOqOEotczFHl5tLoUcLiffEBCFSxz8pu4MeUs"/>
+</div>
+<div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
+          FISH
+        </div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">דָּג</span>
+<div class="mt-2.5 w-full bg-surface-container-high/60 py-1 px-2 rounded-full flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">volume_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">נלמד!</span>
+</div>
+</div>
+<!-- Word 4: LION -->
+<div class="shrink-0 w-36 bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center shadow-[0_4px_12px_rgba(13,28,46,0.06)] transition-transform active:scale-95 cursor-pointer relative" onclick="playWordAudio('LION')">
+<div class="absolute top-2.5 left-2.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
+<img class="w-14 h-14 object-contain" data-alt="Chubby happy baby lion cub with fluffy mane, smiling sweetly, soft physical toy aesthetic with warm honey tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_09XhR0xAVm8c6EEF3uoF3SqO9rDQZ3ohGYhvQp8DqNlvYUXNalT3uwIlrQht76mftoUuaT4Y10km-iHsjoseprE8qL6-dgP8G1NFloQ6-cI5wXKvQ5z3T2UXQ-yly-gZAfIXNeQbAZd7GAqEzUN2mI1Wb0eGU-Yqk98FyuGCCZX6s7ZQPFiK4SIOH4IUtw4f9qTWrPYdK7JGz49V-0a9OZhWgKKEMP-lcXoQZhus8in-aEKHqNSY"/>
+</div>
+<div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
+          LION
+        </div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">אַרְיֵה</span>
+<div class="mt-2.5 w-full bg-surface-container-high/60 py-1 px-2 rounded-full flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">volume_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">נלמד!</span>
+</div>
+</div>
+<!-- Word 5: APPLE -->
+<div class="shrink-0 w-36 bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center shadow-[0_4px_12px_rgba(13,28,46,0.06)] transition-transform active:scale-95 cursor-pointer relative" onclick="playWordAudio('APPLE')">
+<div class="absolute top-2.5 left-2.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
+<img class="w-14 h-14 object-contain" data-alt="Bright shiny red cartoon apple with a soft green leaf, tactile wooden toy aesthetic, rounded clean rendering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrZbl16Iv6OAU7Gr4P-WfnGuJ698wPVighB5u6NZfw9sfZlf9z4AK2hGNhTOK6YS4nIsVBI1iGr7-uOOm0mRX5lwSWTY7pW_thGEyX8uIRiTXG9-0NRz9YTbwWmcoHKJdUC9WtQF-itZYfs9wBO4GW9jtoXYkcbE05OBGGRBHbmYhgna0YIq3aKpN2d7JSPUmJD38rXqAhQ5_nDlGucuyI1z0r2HpqCCVoMvJu6Ke7bFawKRZGbbh_"/>
+</div>
+<div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
+          APPLE
+        </div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">תַּפּוּחַ</span>
+<div class="mt-2.5 w-full bg-surface-container-high/60 py-1 px-2 rounded-full flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">volume_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">נלמד!</span>
+</div>
+</div>
+<!-- Word 6: BALL -->
+<div class="shrink-0 w-36 bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center shadow-[0_4px_12px_rgba(13,28,46,0.06)] transition-transform active:scale-95 cursor-pointer relative" onclick="playWordAudio('BALL')">
+<div class="absolute top-2.5 left-2.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-low flex items-center justify-center overflow-hidden mb-2">
+<img class="w-14 h-14 object-contain" data-alt="Playful colorful bouncy striped beach ball in bright red, yellow, and blue, smooth soft rubber finish, child game element" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWAHHR_X-U8S9OvbOVdsSOa8BTjohgnTb7yu0BDC0UOUV4NNTZWiLtJu0GFov5hByK0y3DMKlhYNiZU5nJ8jtSxQt_FKY2eYyemlXRULekFS0kAsutFyw2HKBMHWGvhYPlzLhN22Ms9b1O2YI21N7zsPowOEgWewY6yu_fYdXsIyPCzkQtUz-OZ5vHlxLVRm4dD_00k3JwvBRXNf4XkTQrR-l811HDQmc4unSrVTyxkvk-Aq-GTIn6"/>
+</div>
+<div class="font-english-word-display text-[22px] leading-tight text-on-surface font-extrabold tracking-wide" dir="ltr">
+          BALL
+        </div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">כַּדּוּר</span>
+<div class="mt-2.5 w-full bg-surface-container-high/60 py-1 px-2 rounded-full flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">volume_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">נלמד!</span>
+</div>
+</div>
+</div>
+<!-- Monthly Summary Micro-Badge Pill -->
+<div class="self-center bg-surface-container-high/70 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">workspace_premium</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">סה״כ 18 מילים חדשות נלמדו החודש! 🎉</span>
+</div>
+</div>
+<!-- Section 3: My Badges & Achievements -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">trophy</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">שביל ההישגים והתגים שלי</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 / 4 הושגו</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Badge 1: Animal Lover -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md flex flex-col items-center text-center shadow-[0_4px_16px_rgba(13,28,46,0.05)] relative overflow-hidden transition-transform active:scale-98">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center text-3xl shadow-sm mb-2 relative">
+<span>🦁</span>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest rounded-full p-0.5 shadow">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug">אוהב חיות</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">5 מילות חיות בסיסיות</span>
+<span class="mt-2.5 bg-primary-fixed/50 text-on-primary-fixed font-label-sm text-[11px] px-2.5 py-0.5 rounded-full font-bold">נפתח! ✨</span>
+</div>
+<!-- Badge 2: Confident Voice Explorer -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md flex flex-col items-center text-center shadow-[0_4px_16px_rgba(13,28,46,0.05)] relative overflow-hidden transition-transform active:scale-98">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-3xl shadow-sm mb-2 relative">
+<span>🗣️</span>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest rounded-full p-0.5 shadow">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug">מדבר בביטחון</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">10 הקלטות דיבור מושלמות</span>
+<span class="mt-2.5 bg-primary-fixed/50 text-on-primary-fixed font-label-sm text-[11px] px-2.5 py-0.5 rounded-full font-bold">נפתח! 🌟</span>
+</div>
+<!-- Badge 3: Daily Streaker -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md flex flex-col items-center text-center shadow-[0_4px_16px_rgba(13,28,46,0.05)] relative overflow-hidden transition-transform active:scale-98">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-3xl shadow-sm mb-2 relative">
+<span>⚡</span>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest rounded-full p-0.5 shadow">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug">מתרגל יומי</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">4 ימי רצף של כיף</span>
+<span class="mt-2.5 bg-primary-fixed/50 text-on-primary-fixed font-label-sm text-[11px] px-2.5 py-0.5 rounded-full font-bold">נפתח! 🔥</span>
+</div>
+<!-- Badge 4: Sentence Explorer (Locked with 80% progress) -->
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-md flex flex-col items-center text-center shadow-[0_4px_16px_rgba(13,28,46,0.03)] relative overflow-hidden opacity-90 transition-transform active:scale-98">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-3xl shadow-inner mb-2 relative">
+<span class="filter grayscale opacity-60">🚀</span>
+<div class="absolute inset-0 bg-surface-dim/40 rounded-full flex items-center justify-center backdrop-blur-[1px]">
+<span class="material-symbols-outlined text-outline text-[20px]">lock</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug">חוקר משפטים</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">משפט שלם ראשון באנגלית</span>
+<!-- Mini Progress Pill for Locked Badge -->
+<div class="mt-2 w-full flex flex-col items-center gap-1">
+<div class="w-20 bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%;"></div>
+</div>
+<span class="font-label-sm text-[10px] text-primary font-bold">עוד קצת! (80%)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Quick Playful Review CTA -->
+<div class="pt-1 pb-2">
+<button class="w-full bg-primary text-on-primary rounded-full min-h-[62px] px-space-lg flex items-center justify-center gap-space-sm font-label-chunky text-label-chunky shadow-[0_5px_0_0_#23169c,0_12px_24px_-4px_rgba(53,37,205,0.3)] active:translate-y-1 active:shadow-[0_1px_0_0_#23169c] transition-all cursor-pointer" id="review-btn">
+<span class="text-2xl animate-bounce">🎮</span>
+<span>בואו נחזור על המילים במשחק מהיר!</span>
+</button>
+</div>
+</div>
+</main>
+</section>
+<section class="screen flex flex-col min-h-screen" id="screen-parent" data-screen="parent" aria-hidden="true">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="LingoPop App Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AOf_bkovzO_1k8Yq5vKxUjDqGf66j_g3yTjW-0G4qS3iM6qQfQ=s120"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">LingoPop</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface flex-1 text-center truncate px-2">אזור הורים</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full gap-space-lg select-none pb-4">
+<!-- Parent Mode Context Header & Profile Strip -->
+<div class="flex items-center justify-between bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-primary-fixed flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A warm, bright, smiling portrait photo of a cheerful 5 year old Israeli boy with curly brown hair wearing a comfy soft mint green sweater, natural home lighting, clean minimalist portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwwsxyKJTlWzt-IBmGT3d-ewfL2sOf5DWvoGmdSTvIL5TRFi0fdFNN2VRwXvGden6U7lGL7AM5gSVR68qRfwJpERqdHiE9W8mqbrfo2pP7Ps35Tqa7qLuitl6LNaaQVMzplbrULnv6bTaacSO1IibsFP4ftYIyyf-qkdZ7GHz0EeJIlB1qkX3h8wUQAdT0laIaDAiCHEFNNUx_uHtXMMLqbNy_AGWOhSf8hEV2Y_rLGwf0D-Mniu4F"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">איתי</span>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-primary px-2 py-0.5 rounded-full font-bold">גיל 5–6</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">מעקב למידה שבועי מותאם אישית</p>
+</div>
+</div>
+<!-- Security Indicator Pill -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm font-semibold">נעילת הורים</span>
+</div>
+</div>
+<!-- Weekly Overview Snapshot Section -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">analytics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">תמונת מצב שבועית</h2>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed">
+<span class="text-[13px]">🌱</span>
+<span class="font-label-sm text-label-sm font-bold">קצב למידה מצוין ועקבי</span>
+</div>
+</div>
+<!-- 3-Column Metrics Grid -->
+<div class="grid grid-cols-3 gap-space-xs sm:gap-space-sm">
+<!-- Metric 1: Time -->
+<div class="flex flex-col justify-between p-3.5 bg-surface-container-lowest rounded-DEFAULT shadow-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">זמן למידה</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-on-surface">32</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">דק׳</span>
+</div>
+</div>
+<p class="font-label-sm text-[11px] leading-tight text-on-surface-variant mt-1.5">~8 דק׳ ליום (מאוזן)</p>
+</div>
+<!-- Metric 2: Completed Lessons -->
+<div class="flex flex-col justify-between p-3.5 bg-surface-container-lowest rounded-DEFAULT shadow-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">שיעורים</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-on-surface">5</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">+2</span>
+</div>
+</div>
+<p class="font-label-sm text-[11px] leading-tight text-on-surface-variant mt-1.5">הושלמו בהצלחה</p>
+</div>
+<!-- Metric 3: Mastered Words -->
+<div class="flex flex-col justify-between p-3.5 bg-surface-container-lowest rounded-DEFAULT shadow-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_stories</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">מילים חדשות</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-on-surface">14</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">מילים</span>
+</div>
+</div>
+<p class="font-label-sm text-[11px] leading-tight text-on-surface-variant mt-1.5">הוטמעו בזיכרון</p>
+</div>
+</div>
+</section>
+<!-- Skill Focus & Pedagogical Insights (Bento Split) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">psychology</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">מה הילד תרגל הכי הרבה?</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Pronunciation Card -->
+<div class="flex flex-col justify-between p-space-md bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">זיהוי שמע והגייה</h3>
+<span class="font-label-sm text-label-sm text-primary font-bold">12 ניסיונות מוצלחים</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]">record_voice_over</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">
+          איתי הפגין ביטחון רב בהגיית אותיות שקטות ופונטיקה קצרה. דיוק קולי של 92%!
+        </p>
+</div>
+<!-- Practice Recommendation Card -->
+<div class="flex flex-col justify-between p-space-md bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">מילה לחיזוק בבית</h3>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">המלצת המערכת</span>
+</div>
+</div>
+<span class="text-xl">🦁</span>
+</div>
+<div class="mt-3 flex items-center justify-between bg-surface-container-low p-2.5 rounded-DEFAULT">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface-variant">מומלץ להגיד בנחת:</span>
+<span class="font-english-phonics-pill text-english-phonics-pill text-primary tracking-wider" dir="ltr">LION</span>
+</div>
+<button aria-label="Play sound" class="w-10 h-10 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Topics Mastery Progress Breakdown -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">bar_chart</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">התקדמות לפי נושאים</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 נושאים פעילים</span>
+</div>
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<!-- Subject 1: Animals -->
+<div class="py-2.5">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xl">🐾</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">חיות (Animals)</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-primary">100% הושלם</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden mb-2">
+<div class="h-full bg-primary rounded-full" style="width: 100%;"></div>
+</div>
+<div class="flex items-center gap-1.5 flex-wrap" dir="ltr">
+<span class="font-label-sm text-[12px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface">DOG</span>
+<span class="font-label-sm text-[12px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface">CAT</span>
+<span class="font-label-sm text-[12px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface">FISH</span>
+<span class="font-label-sm text-[12px] bg-tertiary-fixed text-tertiary px-2 py-0.5 rounded-full font-bold">LION</span>
+</div>
+</div>
+<div class="h-px bg-surface-container"></div>
+<!-- Subject 2: Food & Fruits -->
+<div class="py-2.5">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xl">🍎</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">אוכל ופירות (Food &amp; Fruits)</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">60% בתהליך</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden mb-2">
+<div class="h-full bg-primary-container rounded-full" style="width: 60%;"></div>
+</div>
+<div class="flex items-center gap-1.5 flex-wrap" dir="ltr">
+<span class="font-label-sm text-[12px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface">APPLE</span>
+<span class="font-label-sm text-[12px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface">BANANA</span>
+<span class="font-label-sm text-[12px] bg-surface-container-low px-2 py-0.5 rounded-full text-outline">MILK</span>
+</div>
+</div>
+<div class="h-px bg-surface-container"></div>
+<!-- Subject 3: Colors -->
+<div class="py-2.5">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xl">🎨</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">צבעים (Colors)</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-secondary">נפתח השבוע ✨</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden mb-2">
+<div class="h-full bg-secondary rounded-full" style="width: 25%;"></div>
+</div>
+<div class="flex items-center gap-1.5 flex-wrap" dir="ltr">
+<span class="font-label-sm text-[12px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface">RED</span>
+<span class="font-label-sm text-[12px] bg-surface-container-low px-2 py-0.5 rounded-full text-outline">BLUE</span>
+<span class="font-label-sm text-[12px] bg-surface-container-low px-2 py-0.5 rounded-full text-outline">YELLOW</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Learning Routine Visual Banner -->
+<div class="relative w-full rounded-lg overflow-hidden bg-primary p-space-md text-on-primary shadow-md">
+<div class="flex items-center justify-between relative z-10">
+<div class="max-w-[70%]">
+<span class="font-label-sm text-label-sm text-primary-fixed block mb-1">טיפ חינוכי שבועי</span>
+<h3 class="font-headline-sm text-headline-sm font-bold leading-snug">משחקי מילים בנסיעה</h3>
+<p class="font-body-md text-body-md text-primary-fixed mt-1">שאלו את איתי: "איך אומרים חתול באנגלית?" כשרואים חיה ברחוב.</p>
+</div>
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-[30px] text-primary-fixed">emoji_objects</span>
+</div>
+</div>
+</div>
+<!-- Parent Controls & Settings Rows -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">הגדרות וניהול למידה קל</h2>
+</div>
+<div class="flex flex-col bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden">
+<!-- Setting Row 1: Daily Reminder -->
+<div class="flex items-center justify-between p-space-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">תזכורת יומית ידידותית</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">17:30 אחה״צ (פעיל)</span>
+</div>
+</div>
+<!-- Toggle button -->
+<button aria-label="Toggle reminder" class="w-12 h-7 bg-primary rounded-full p-0.5 flex items-center justify-end transition-colors duration-200" id="reminder-toggle" type="button">
+<span class="w-6 h-6 bg-surface-container-lowest rounded-full shadow-sm block"></span>
+</button>
+</div>
+<div class="h-px bg-surface-container mx-space-md"></div>
+<!-- Setting Row 2: Difficulty / Age Adaptation -->
+<button class="flex items-center justify-between p-space-md text-right w-full active:bg-surface-container-low transition-colors" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">רמת קושי והתאמת גיל</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">גן חובה / כיתה א׳ (גילאי 5–6)</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="font-label-sm text-label-sm font-bold">שנה</span>
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</div>
+</button>
+<div class="h-px bg-surface-container mx-space-md"></div>
+<!-- Setting Row 3: WhatsApp Share -->
+<button class="flex items-center justify-between p-space-md text-right w-full active:bg-surface-container-low transition-colors" id="whatsapp-share-btn" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">שיתוף דוח שבועי לוואטסאפ</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">קבלת סיכום קצר וגאה בלחיצה</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]">chat</span>
+</button>
+</div>
+</section>
+<!-- Micro Toast Confirmation (Hidden by default) -->
+<div class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full shadow-lg font-label-sm text-label-sm flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-50" id="toast-pill">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed">check_circle</span>
+<span>הדוח נשלח לוואטסאפ בהצלחה!</span>
+</div>
+</div>
+</main>
+</section>
+</div>
+<nav id="app-nav" class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(13,28,46,0.06)] rounded-t-lg" data-active-classes="text-primary bg-primary-fixed/40 font-bold"><div class="flex justify-around items-center h-20 px-2"><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[56px] py-1 px-3 rounded-full transition-all duration-200 active:scale-95 text-primary bg-primary-fixed/40 font-bold" data-path="home" href="#"><span class="material-symbols-outlined text-[26px]">cottage</span><span class="font-label-sm text-label-sm">בית</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[56px] py-1 px-3 rounded-full text-on-surface-variant transition-all duration-200 active:scale-95" data-path="learn-topics" href="#"><span class="material-symbols-outlined text-[26px]">menu_book</span><span class="font-label-sm text-label-sm">למידה</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[56px] py-1 px-3 rounded-full text-on-surface-variant transition-all duration-200 active:scale-95" data-path="progress" href="#"><span class="material-symbols-outlined text-[26px]">military_tech</span><span class="font-label-sm text-label-sm">התקדמות</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[56px] py-1 px-3 rounded-full text-on-surface-variant transition-all duration-200 active:scale-95" data-path="parent-zone" href="#"><span class="material-symbols-outlined text-[26px]">family_restroom</span><span class="font-label-sm text-label-sm">אזור הורים</span></a></div></nav>
+<noscript>האפליקציה דורשת JavaScript.</noscript>
+<script src="app.js"></script>
+</body></html>
